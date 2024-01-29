@@ -71,9 +71,9 @@
 		}
 
 		// pass console.log's to parent
-		var console = {
-			log: function(m){
-				if(m != "p5.RendererGL: enabled webgl context"){
+		// https://stackoverflow.com/questions/7042611/override-console-log-for-production#comment121220200_7042634
+		var console = console || {}; console.log = function(m){
+			if(m != "p5.RendererGL: enabled webgl context"){
 					consoleMessage(m, .1);
 
 					// only send to window console if unique!
@@ -87,8 +87,8 @@
 					clearTimeout(p5consoleTimer);
 					// p5consoleTimer = setTimeout(function(){clearConsole();}, p5consoleDelay);
 				}
-			}
 		};
+
 
 		function clearConsole(){
 			p5console.value = '';

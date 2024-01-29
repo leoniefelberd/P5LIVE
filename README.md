@@ -1,47 +1,44 @@
 # P5LIVE
-v 1.4.1  
-cc [teddavis.org](http://teddavis.org) – 2019 - 2021  
+v 1.5.0  
+cc [teddavis.org](http://teddavis.org) – 2019 - 2023  
 p5.js collaborative live-coding vj environment!
 
 
 ## SHORTCUTS (default)
-- `CTRL + N` » new sketch
-- `CTRL + ENTER` » softCompile
-- `CTRL + SHIFT + ENTER` » hardCompile
-- `CTRL + E` » editor toggle
-- `CTRL + M` » menu toggle
-- `CTRL + A` » autocompile toggle
-- `CTRL + ,` » settings toggle
-- `CTRL + R` » references toggle
-- `CTRL + B` » chalkboard toggle
-- `CTRL + T` » tidy code
-- `CTRL + SPACE` » autocomplete
-- `CTRL + -` » decrease fontsize
-- `CTRL + +` » increase fontsize
-- `CTRL + S` » save png [ + code ]
-- `CTRL + I` » 720*720px popup for screen-recording
-- `CTRL + 1, 2, 3...0` » jump between first 10 sketches
 
-Beta shortcuts
-- `CTRL + SHIFT + ⇡⇣` » jump to previous/next sketch  
-- `CTRL + SHIFT + DELETE` » delete current sketch
+|  |  |
+|--:|:--|
+|`CTRL` + `ENTER`|softCompile|
+|`CTRL` + `SHIFT` + `ENTER`|  hardCompile |
+|  `CTRL` + `E` |  editor toggle |
+| `CTRL` + `N` | new sketch |
+| `CTRL` + `SHIFT` + `C` | clone sketch |
+| `CTRL` + `A` | autocompile toggle |
+| `CTRL` + `,` | settings toggle |
+| `CTRL` + `R` | references toggle |
+| `CTRL` + `B` | chalkboard toggle |
+| `CTRL` + `T` | tidy code |
+| `CTRL` + `SPACE` | autocomplete |
+| `CTRL` + `+` | increase fontsize |
+| `CTRL` + `-` | decrease fontsize |
+| `CTRL` + `S` | save png [` + `code ] |
+| `CTRL` + `1, 2, 3...0` | jump to first 10 sketches |
+| `CTRL` + `SHIFT` + `⇡⇣` | jump to previous/next sketch |  
+| `CTRL` + `SHIFT` + `DELETE` | delete current sketch |
 
+*Customize shortcut keys within the `Settings` panel*
 
 ## SAVING
-Sketches are **_ONLY_** saved in your browser's localStorage..!  
+Sketches are **_ONLY_** saved in your browser's localStorage(!).  
 Export all (<img class="svg" src="includes/icons/download.svg" height="12px">) sketches + settings regularly.  
 Clearing browser history/data will likely erase all sketches + settings.
 
 localStorage is unique and isolated per http[s] / domain / port,  
 so export/import all sketches to migrate between online / offline / browsers.  
-You can now use `Settings Panel`» `Backup` » `Now` to export all settings + sketches.
-
-*The file structure changed in v1.3, so make sure all copies of P5LIVE are up to date.  
-You can import old sketches, but newly saved ones won't open in versions < 1.3.*
+Simply use `Settings Panel`» `Backup` » `Now` to export all settings + sketches.
 
 #### Automatic Backups
-See `Settings Panel` » `Backup` to automatically export a P5LIVE backup file at varying intervals.  
-If using [Fancy (nodejs) Offline Server](https://github.com/ffd8/P5LIVE#offline-server), it will save these backups to your P5LIVE folder rather than downloads.
+See `Settings Panel` » `Backup` to automatically export a P5LIVE backup file at varying intervals. If using [Offline Server](https://github.com/ffd8/P5LIVE#offline-server), it will save these backups to your P5LIVE folder rather than downloads.
 
 
 ## INSTALL
@@ -228,14 +225,20 @@ For examples, see `DEMOS` » `_CANVAS` » `_canvas_chalkboard` + `..._animation`
 
 
 ### SNIPPETS  
-Add custom snippets to '/includes/demos/P5L_snippets.json'.  
-Load snippet via custom shortcut, `CTRL + SHIFT + key`  
+Snippets allow automatically adding chunks of code to your sketch within global space, setup, draw – so you can quickly incorporate the necessary code for various interactions. Previously it was manually added to a .JSON file, but now there's a snippet editor built it!
 
-- `CTRL + SHIFT + A`, adds audio-reactive code.  
-- `CTRL + SHIFT + O`, adds OSC communication code.
+- `ALT + SHIFT + S`, open snippet editor.  
+- `CTRL + SHIFT + S`, open snippet selector.
+
+#### Snippet Editor
+<img src="includes/images/snippets-editor-demo.png" width="500px">  
+
+- Select 'new' to build a new one
+- enter code within the global top, setup bottom, draw top, draw bottom, global bottem
+- 
 
 ### LIBRARIES
-P5LIVE loads p5.js/p5.sound libraries by default. For additional libraries, load them remotely via [CDN host](https://www.jsdelivr.com/) or locally if running offline (ie. `/data/libs/`). Can also be used within `SyncData`!  
+P5LIVE loads p5.js + p5.sound libraries by default. For additional libraries, load them remotely via [CDN host](https://www.jsdelivr.com/) or locally if running offline (ie. `/data/libs/`). Can also be used within `SyncData`!  
 
 Add this snippet to the top of your sketch, placing one path per array item:  
 
@@ -246,8 +249,8 @@ let libs = [
 ];
 ```
 
-#### <span style="text-decoration:line-through">p5.sound</span>
-To exclude `p5.sound` library (ie. for Tone.js), add `// no p5sound` anywhere in your code.  
+#### <span style="text-decoration:line-through">p5 or p5.sound</span>
+To exclude libraries `p5.js` (testing other versions) or `p5.sound` (ie. for Tone.js), add `//no p5` or `// no p5sound` anywhere in your code.  
 See `_audio_gen_tonejs` demo for an example.
 
 ### SANDBOX
@@ -268,9 +271,9 @@ See `DEMOS » _HYDRA` for additional examples.
 ### ASSETS
 Loading custom assets (image/font/obj/audio/...):  
 
-- Remotely from a [CORS](https://enable-cors.org/resources.html) friendly server ([imgur](https://imgur.com)/[glitch.com](https://glitch.com) images/videos, [GitHub](https://github.com) raw for ~anything)  
+- Remotely from a [CORS](https://enable-cors.org/resources.html) friendly server ([imgbb](https://imgbb.com/)/[glitch.com](https://glitch.com) images/videos, [GitHub](https://github.com) raw for ~anything)  
 `loadImage('https://i.imgur.com/ijQzwsx.jpeg');`
-- Locally, if running offline (ie. `/data/images/`)  
+- Locally, if running offline use the `/data` folder  
 `loadImage('data/images/fish.png');`
 
 ### VIEW ONLY MODE
@@ -296,7 +299,7 @@ Use `pixelDensity(1);` in `setup()`.
 ### MIDI/OSC
 - MIDI works online/offline and is implemented with webmidi.js  
 For example, *demos/_input/_input_midi*
-- OSC works offline when using node.js/npm.  
+- OSC works offline.  
 For example,  *demos/_input/_input_osc* and run Processing sketch, [p5live\_osc\_setup](https://gist.github.com/ffd8/f9f33cc7461f8467f62d5a792dde53ca)  
 or use the OSC snippet (`CTRL + SHIFT + O`) and set host/in/out ports.  
 
@@ -311,7 +314,8 @@ Loads a new sketch.
 `sudo killall coreaudiod` (first take off headphones + turndown stereo!)
 
 *Incase you need a loop to run more than 10000 times ||  1 second,  
-add `// noprotect` anywhere in your code.*
+add `// noprotect` anywhere in your code.  
+(except during COCODING sessions to protect peers)*
 
 ### EXTRA FUNCTIONS
 Additional custom functions are available in P5LIVE sketches:  
@@ -438,37 +442,20 @@ ie. [`https://p5live.org/?recoding=includes/demos-data/recoding/demo.json&gaps=t
 
 
 ## OFFLINE SERVER
-### Basic - Python  
-Use for quickest setup or to run multiple port instances (each with  own sketches storage).  
-*No COCODING / OSC with this technique.*  
 
-- [Download P5LIVE](https://github.com/ffd8/P5LIVE/archive/refs/heads/main.zip) *or [Clone Github Repo](https://github.com/ffd8/P5LIVE)*  
-- MacOS – open `Terminal` // Windows – open `command prompt`  
-- type `cd` + `SPACEBAR` + drag/drop P5LIVE folder into window, press `ENTER` 
-- check Python version, type `python --version`, press `ENTER` 
-	- `Python 2.0+`, type `python -m SimpleHTTPServer 5000`, press `ENTER`    
-	- `Python 3.0+`, type `python -m http.server 5000`, press `ENTER`    
-- P5LIVE is live! visit » [http://localhost:5000](http://localhost:5000)
-- To quit, `CTRL + C` in Terminal (or command prompt)
-
-Port `5000` is suggested. For alternative, just type desired one in snippet above and remember P5LIVE sketches are stored in localstorage which is unique per `domain:port`
-
-### Fancy - nodejs/npm  
-Use for all features (COCODING / OSC) + optional HTTPS mode (see below). 
-
-- [Download P5LIVE](https://github.com/ffd8/P5LIVE/archive/refs/heads/main.zip) *or [Clone Github Repo](https://github.com/ffd8/P5LIVE)*  
+- [Download P5LIVE](https://github.com/ffd8/P5LIVE/archive/refs/heads/main.zip) *or [Clone in Github Desktop](x-github-client://openRepo/https://github.com/ffd8/P5LIVE)*  
 - Install Node.js + NPM ([binary installers](https://nodejs.org/en/download/))  
 - MacOS – open `Terminal` // Windows – open `command prompt`  
 - type `cd` + `SPACEBAR` + drag/drop P5LIVE folder into window, press `ENTER`  
 - type `npm install`, press `ENTER`  
 - type `npm start`, press `ENTER`  (for custom port: `npm start ####`)
 - P5LIVE is live! visit » [http://localhost:5000](http://localhost:5000)
-- To quit, `CTRL + C` in Terminal (or command prompt)
+- type `CTRL + C`, to stop server.
 
-Port `5000` is suggested. For alternative, add desired port number to start command above, ie: `npm start 5010`. Remember P5LIVE sketches are stored in localstorage which is unique per `domain:port`
+Port `5000` is default, however MacOS started using it for AirPlay. To change, add desired port number to `npm start` command above, ie: `npm start 5010`. Remember P5LIVE sketches are stored in localstorage which is unique per `domain:port`. This allows you to run multiple instances that are isolated from eachother on different ports.
 
 ### HTTPS
-If using **Fancy** offline server, you may want to COCODE with peers on the same local network or even remotely around the world. With p5.sound always enabled, a `localhost` or `https` connection is now required regardless of mic being active. While you access via `localhost`, all connected peers are simply `http` by default, therefore we can use an http-proxy to tunnel `https` traffic to our `localhost`!
+If using offline server, you may want to COCODE with peers on the same local network or even remotely around the world. With p5.sound always enabled, a `localhost` or `https` connection is now required regardless of mic being active. While you access via `localhost`, all connected peers are simply `http` by default, therefore we can use an http-proxy to tunnel `https` traffic to our `localhost`!
 
 #### Local (same network, works offline):    
 - Start P5LIVE with `npm start https`, or custom port `npm start #### https`  
@@ -493,7 +480,7 @@ If using **Fancy** offline server, you may want to COCODE with peers on the same
 P5LIVE is possible thanks to these amazing open-source projects.  
 Listed in order of adoption:  
 
-- [p5.js](https://p5js.org), magic – v1.1.9
+- [p5.js](https://p5js.org), magic
 - [ace editor](https://ace.c9.io), code editor on top
 - [peeredit / rga.js](https://github.com/jorendorff/peeredit), syncing text for cocoding
 - [socket.io](https://socket.io/), websockets for cocoding

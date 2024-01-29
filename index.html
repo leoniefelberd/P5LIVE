@@ -33,6 +33,7 @@
 </head>
 <body>
 	<iframe id="chalkboard"></iframe>
+	<iframe id="sonicode" src="includes/templates/p5live_sonicode.html" style="display:none;"></iframe>
 	<div id="p5-drop"> </div>
 	<div id="loader">
 		<div id="loader-msg">
@@ -175,7 +176,7 @@
 							<input class="tippy" data-title="Scrub" id="recoding-range" type="range" disabled="disabled" min=0 max=1 value=0 name="" style="width: 96%;height:20px;" onmousedown="recodingStop()" oninput="recodingScrub(this.value)">
 						</div>
 					</div>
-					<div id="p5live-buttons-recoding-settings" class="menu-settings menu-contents" style="display:none;">
+					<div id="p5live-buttons-recoding-settings" class="menu-settings-recoding menu-contents" style="display:none;">
 						<div class="tippy-left" style="cursor:help;" data-title="Loop playback" onclick="">
 							<input id="recoding-settings-loop" type="checkbox" name="recoding-loop" onchange="recoding.loop = this.checked;"> Loop
 						</div>
@@ -212,7 +213,7 @@
 					</button>
 				</div>
 
-				<div id="menu-sketches-filter-clear" class="tippy-left" data-title="Filter Sketches<br>(separate words for an <i>and</i> search)" onclick="filterSketchesClear(true)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div>
+				<div id="menu-sketches-filter-clear" class="tippy-left" data-title="Filter Sketches<br>(separate words for <i>AND</i> search)" onclick="filterSketchesClear(true)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div>
 				<input type="text" class="tippy-left" data-title="Filter Sketches<br>(separate words for an <i>and</i> search)" name="" placeholder="Filter..." id="menu-sketches-filter" onkeyup="filterSketches()">
 
 				<div id="menu-sketches-holder" class="menu-sketches-holder">
@@ -273,8 +274,8 @@
 					</button>
 				</div>
 				<div class="menu-settings menu-contents">
-					<div>
-						<div class="tippy-left" data-title="Set Audio Inputs " style="display:none;">
+					<div class="menu-settings-content">
+						<!-- <div class="tippy-left" data-title="Set Audio Inputs " style="display:none;">
 							<div class="select">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mic"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg><select id="audioSource" class="av-select"></select>
 							</div>
@@ -286,10 +287,10 @@
 							<div class="select" style="display:none;">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-video"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg><select id="videoSource" class="av-select"></select>
 							</div>
-						</div>
-						<div class="tippy-left" style="cursor:help;float:left;" data-title="Auto-compile code on keyup" onclick="autoCompileToggle();">
+						</div> -->
+					<div class="tippy-left" style="cursor:help;" data-title="Auto-compile code on keyup" onclick="autoCompileToggle();">
 						<input type="checkbox" id="settings-autocompile" name="settings-autocompile" value="settings-autocompile">
-						Live Coding</div> 
+						Live Coding 
 							<select id="settings-compiletimer" class="tippy menu-settings-dropdown" style="" data-title="Delay for compile after keyUp" onchange="compileTimerChange();">
 									<option value="250">250ms</option>
 									<option value="500">500ms</option>
@@ -358,36 +359,6 @@
 						<span>Libs:</span>
 						<input type="text" id="settings-libs" name="settings-libs" placeholder="CSV, of, libs">
 					</div>
-					<div class="tippy-left" style="cursor:help;" data-title="Editor font-size">
-						Code Size:  <input type="" name="menu-settings-fontsize" id="menu-settings-fontsize" class="menu-settings-input-text" value="15" onkeyup="fontSizeSet(this.value);"> pt
-					</div>
-
-					<div class="tippy-left" style="cursor:help;" data-title="Color behind lines of code">
-						Code Background: <input type="checkbox" id="settings-usebg" name="settings-usebg" value="settings-usebg" onchange="themeBGactiveToggle();">
-						<div id="pickr" class="pickr"></div>
-					</div>
-					<div class="tippy-left" style="cursor:help;" data-title="Set editor theme">
-						Code Theme:
-						<select id="menu-settings-theme"  class="menu-settings-dropdown" onchange="setTheme(this.selectedIndex);">
-							<option value="ace/theme/gob">Green on Black</option>
-							<option value="ace/theme/ambiance">Ambiance</option>
-							<option value="ace/theme/cobalt">Cobalt</option>
-							<option value="ace/theme/pastel_on_dark">Pastel on dark</option>
-							<option value="ace/theme/twilight">Twilight</option>
-						</select>
-					</div>
-
-					<div class="tippy-left" style="cursor:help;" data-title="Set keybindings <br>(adjust shortcuts as needed)">
-						Code Keybinding:
-						<select id="menu-settings-keybindings" class="menu-settings-dropdown" onchange="setKeybinding(this.value);">
-							<option value="keybinding">Ace</option>
-							<option value="sublime">Sublime</option>
-							<option value="vscode">VS Code</option>
-							<option value="vim">Vim</option>
-							<option value="emacs">Emacs</option>
-						</select>
-					</div>
-
 					<div class="tippy-left" style="cursor:help;" data-title="Backup sketches to P5LIVE/_backups folder">
 						Backup:
 						<select id="menu-settings-backup" class="menu-settings-dropdown" onchange="setBackup(this.selectedIndex);">
@@ -400,6 +371,143 @@
 						<button class="menu-settings-dropdown backup-now" onclick="backupSketches();">Now</button>
 					</div>
 
+					<hr>
+
+					<h2>EDITOR</h2>
+					<div class="tippy-left" style="cursor:help;" data-title="Editor font-size">
+						Size:  <input type="" name="menu-settings-fontsize" id="menu-settings-fontsize" class="menu-settings-input-text" value="15" onkeyup="fontSizeSet(this.value);"> pt
+					</div>
+
+					<div class="tippy-left" style="cursor:help;" data-title="Color behind lines of code" onclick="themeBGactiveToggle();">
+						<input type="checkbox" id="settings-usebg" name="settings-usebg" value="settings-usebg"> Background 
+						<div id="pickr" class="pickr"></div>
+					</div>
+					<!-- <div class="tippy-left" style="cursor:help;" data-title="Override theme's un-styled text">
+						Text: <input type="checkbox" id="settings-usebg" name="settings-usebg" value="settings-usebg" onchange="themeTXTactiveToggle();">
+						<div id="pickr-txt" class="pickr-txt"></div>
+					</div>
+					<div class="tippy-left" style="cursor:help;" data-title="Override theme's active line">
+						Active-Line: <input type="checkbox" id="settings-usebg" name="settings-usebg" value="settings-usebg" onchange="themeALactiveToggle();">
+						<div id="pickr-al" class="pickr-al"></div>
+					</div> -->
+					<!-- .ace_active-line -->
+
+					
+					<div class="tippy-left" style="cursor:help;" data-title="Set editor theme">
+						Theme:
+						<select id="menu-settings-theme"  class="menu-settings-dropdown" onchange="setTheme(this.selectedIndex);">
+							<optgroup label="Dark">
+								<option value="ace/theme/ambiance">Ambiance</option>
+								<option value="ace/theme/chaos">Chaos</option>
+								<option value="ace/theme/clouds_midnight">Clouds Midnight</option>
+								<option value="ace/theme/dracula">Dracula</option>
+								<option value="ace/theme/cobalt">Cobalt</option>
+								<option value="ace/theme/gruvbox">Gruvbox</option>
+								<option value="ace/theme/gob">Green on Black</option>
+								<option value="ace/theme/idle_fingers">idle Fingers</option>
+								<option value="ace/theme/kr_theme">krTheme</option>
+								<option value="ace/theme/merbivore">Merbivore</option>
+								<option value="ace/theme/merbivore_soft">Merbivore Soft</option>
+								<option value="ace/theme/mono_industrial">Mono Industrial</option>
+								<option value="ace/theme/monokai">Monokai</option>
+								<option value="ace/theme/nord_dark">Nord Dark</option>
+								<option value="ace/theme/one_dark">One Dark</option>
+								<option value="ace/theme/pastel_on_dark">Pastel on dark</option>
+								<option value="ace/theme/solarized_dark">Solarized Dark</option>
+								<option value="ace/theme/terminal">Terminal</option>
+								<option value="ace/theme/tomorrow_night">Tomorrow Night</option>
+								<option value="ace/theme/tomorrow_night_blue">Tomorrow Night Blue</option>
+								<option value="ace/theme/tomorrow_night_bright">Tomorrow Night Bright</option>
+								<option value="ace/theme/tomorrow_night_eighties">Tomorrow Night 80s</option>
+								<option value="ace/theme/twilight">Twilight</option>
+								<option value="ace/theme/vibrant_ink">Vibrant Ink</option>
+							</optgroup>
+							<optgroup label="Bright">
+								<option value="ace/theme/chrome">Chrome</option>
+								<option value="ace/theme/clouds">Clouds</option>
+								<option value="ace/theme/crimson_editor">Crimson Editor</option>
+								<option value="ace/theme/dawn">Dawn</option>
+								<option value="ace/theme/dreamweaver">Dreamweaver</option>
+								<option value="ace/theme/eclipse">Eclipse</option>
+								<option value="ace/theme/github">GitHub</option>
+								<option value="ace/theme/iplastic">IPlastic</option>
+								<option value="ace/theme/solarized_light">Solarized Light</option>
+								<option value="ace/theme/textmate">TextMate</option>
+								<option value="ace/theme/tomorrow">Tomorrow</option>
+								<option value="ace/theme/xcode">XCode</option>
+								<option value="ace/theme/kuroir">Kuroir</option>
+								<option value="ace/theme/katzenmilch">KatzenMilch</option>
+								<option value="ace/theme/sqlserver">SQL Server</option>
+							</optgroup>
+
+							<!-- <optgroup label = "DARK">
+							<option value="ace/theme/gob">Green on Black</option>
+							<option value="ace/theme/ambiance">Ambiance</option>
+							<option value="ace/theme/cobalt">Cobalt</option>
+							<option value="ace/theme/pastel_on_dark">Pastel on dark</option>
+							<option value="ace/theme/twilight">Twilight</option>
+							</optgroup>
+							<optgroup label = "LIGHT">
+							</optgroup> -->
+						</select>
+					</div>
+
+					<div class="tippy-left" style="cursor:help;" data-title="Set keybindings <br>(adjust shortcuts as needed)">
+						Keybinding:
+						<select id="menu-settings-keybindings" class="menu-settings-dropdown" onchange="setKeybinding(this.value);">
+							<option value="keybinding">Ace</option>
+							<option value="sublime">Sublime</option>
+							<option value="vscode">VS Code</option>
+							<option value="vim">Vim</option>
+							<option value="emacs">Emacs</option>
+						</select>
+					</div>
+					<div class="tippy-left" style="cursor:help;" data-title="Modify snippets">
+						Snippets: 
+						<button onclick="snippetsToggle()" style="cursor:pointer;background:none;color:#fff;border:1px solid #888;outline:none;font-size:8pt;">Launch Editor</button>
+					</div>	
+					<div>
+						<span class="tippy-left" data-title="Sonify editor changes" style="cursor:help;" onclick="sonicodeToggle();"><input type="checkbox" id="settings-sonicode" name="settings-sonicode" value="settings-sonicode"> SoniCode</span> <span class="tippy-left" data-title="Oscillator Wavetype or Midi output" style="cursor:help;">
+								<select id="settings-sonicode-mode" class="menu-settings-dropdown" onchange="sonicodeMode(this.value);">
+									<option value="sine">Sine</option>
+									<option value="triangle">Triangle</option>
+									<option value="square">Square</option>
+									<option value="sawtooth">Sawtooth</option>
+									<option value="midi">Midi</option>
+								</select>
+							</span>
+						<div id="settings-sonicode-details">
+							
+							<span class="tippy-left" data-title="Polycount (voices)" style="cursor:help;">
+								Poly: <select id="settings-sonicode-poly" class="menu-settings-dropdown" onchange="sonicodePoly(this.value);">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+								</select>
+							</span>
+							<span class="tippy-left" data-title="Base floor (in Hz)<br>for char to freq" style="cursor:help;">
+								Transpose: <select id="settings-sonicode-base" class="menu-settings-dropdown" onchange="sonicodeBase(this.value);">
+									<option value="0">0</option>
+									<option value="27.50">1</option>
+									<option value="55">2</option>
+									<option value="110">3</option>
+									<option value="220">4</option>
+									<option value="440">5</option>
+									<option value="880">6</option>
+									<option value="1760">7</option>
+									<option value="3520.00">8</option>
+									<option value="7040.00">9</option>
+								</select>
+							</span>
+						</div>
+					</div>	
+
+				<hr>
 
 				<h2>SHORTCUTS</h2>
 					<div id="menu-shortcuts-holder">
@@ -416,7 +524,107 @@
 
 
 		</div>
+
+
 	</div>
+
+	<div id="snippets-panel-apply">
+		<div class="snippets-bg"></div>
+		<div id="snippets-content">
+			<div class="menu-section">
+				<div class="menu-section-bg"></div>
+				<div class="menu-header">
+					SNIPPETS 
+					<div class="snippets-close tippy" data-title="Close Panel" onclick="snippetsApplyToggle()">
+						X
+					</div>
+				</div>
+				<div class="menu-sketches-buttons snippets-buttons">
+					<select id="snippets-select-apply" class="snippets-select menu-button" onchange="snippetsApplySelect(this.value)"></select>
+
+					<button class="menu-button snippets-btn-all tippy" onclick="snippetsApply()" data-title="Apply Snippet"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></button>
+
+					<button class="menu-button snippets-btn-all tippy" onclick="snippetsToggle()" data-title="Edit Snippet"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></button>
+
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="snippets-panel">
+		<div class="snippets-bg"></div>
+		<div id="snippets-content">
+			<div class="menu-section">
+				<div class="menu-section-bg"></div>
+				<div class="menu-header">
+					SNIPPETS 
+					<div class="snippets-close tippy" data-title="Close Panel" onclick="snippetsToggle()">
+						X
+					</div>
+				</div>
+				<div class="menu-sketches-buttons">
+					<select id="snippets-select" class="snippets-select menu-button tippy" onchange="snippetsForm(this.value)" data-title="Select Snippet"></select>
+					
+					<button class="menu-button snippets-btn-all tippy" onclick="snippetsApply()" data-title="Apply Snippet"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></button>
+
+					<button class="menu-button snippets-btn-all tippy" onclick="snippetsUpdate('clone')" data-title="Clone Snippet"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+					
+					<button id="snippets-btn-save" class="menu-button snippets-btn-demo tippy" onclick="snippetsSave()" data-title="Save Changes"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-save"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg></button>
+					
+					<button class="menu-button snippets-btn-demo tippy" onclick="snippetsUpdate('rename')" data-title="Rename Snippet"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></button>
+
+					<button class="menu-button snippets-btn-all tippy" onclick="snippetsImportDialog()" data-title="Import Snippet"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg></button>
+					<input id="file-input-snippet" type="file" name="name" style="display: none;" multiple onchange="snippetsImport(this.files);" onclick="this.value=null;" />
+					
+					<button class="menu-button snippets-btn-demo tippy" onclick="snippetsExport()" data-title="Export Snippet"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></button>
+
+					<button class="menu-button snippets-btn-demo tippy" onclick="snippetsDelete()" data-title="Delete Snippet"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button>
+				</div>
+			</div>
+
+			<!-- <div id="snippets-nav">
+				
+			</div> -->
+			
+			<div class="snippets-section">
+				<div class="snippets-label">
+					<span>// global top </span>
+					<svg class="tippy" data-title="Tidy Code" onclick="tidyCode(snip.editors['gt'])" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-align-left"><line x1="17" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="17" y1="18" x2="3" y2="18"></line></svg>
+				</div>
+				<pre id="snippets-code-gt"></pre>
+			</div>
+			<div class="snippets-section">
+				<div class="snippets-label">
+					<span>// setup bottom</span>
+					<svg class="tippy" data-title="Tidy Code" onclick="tidyCode(snip.editors['s'])" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-align-left"><line x1="17" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="17" y1="18" x2="3" y2="18"></line></svg>
+				</div>
+				<pre id="snippets-code-s"></pre>
+			</div>
+			<div class="snippets-section">
+				<div class="snippets-label">
+					<span>// draw top</span>
+					<svg class="tippy" data-title="Tidy Code" onclick="tidyCode(snip.editors['dt'])" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-align-left"><line x1="17" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="17" y1="18" x2="3" y2="18"></line></svg>
+				</div>
+				<pre id="snippets-code-dt"></pre>
+			</div>
+			<div class="snippets-section">
+				<div class="snippets-label">
+					<span>// draw bottom</span>
+					<svg class="tippy" data-title="Tidy Code" onclick="tidyCode(snip.editors['db'])" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-align-left"><line x1="17" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="17" y1="18" x2="3" y2="18"></line></svg>
+				</div>
+				<pre id="snippets-code-db"></pre><br>
+			</div>
+			<div class="snippets-section">
+				<div class="snippets-label">
+					<span>// global bottom</span>
+					<svg class="tippy" data-title="Tidy Code" onclick="tidyCode(snip.editors['gb'])" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-align-left"><line x1="17" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="17" y1="18" x2="3" y2="18"></line></svg>
+				</div>
+				<pre id="snippets-code-gb"></pre>
+			</div>
+		</div>
+	</div>
+
 <textarea style="display:none;" id="p5-template">
 function setup() {
 	createCanvas(windowWidth, windowHeight);
@@ -476,9 +684,9 @@ function println(msg){
 		'use strict'
 
 		/* INIT */
-		let currentVersion = '1.4.1';
-		let currentRevision = 44;
-		let developBranch = false;
+		let currentVersion = '1.5.0';
+		let currentRevision = 45;
+		let developBranch = true;
 
 		// resetP5(); // manual reset
 
@@ -530,37 +738,45 @@ function println(msg){
 			'safeMode': false,
 			'shortcuts':{
 				'softcompile':{
-					'name':'Soft-Compile'
+					'name':'SoftCompile'
 					,'key':'ctrl+enter'
 					,'callback':'recompile()'
 				}
 				,'hardcompile':{
-					'name':'Hard-Compile'
+					'name':'HardCompile'
 					,'key':'ctrl+shift+enter'
 					,'callback':'recompile(true)'
 				}
 				,'editor':{
-					'name':'Editor Toggle'
+					'name':'Editor'
 					,'key':'ctrl+e'
 					,'callback':'editorToggle()'
 				}
 				,'menu':{
-					'name':'Menu Toggle'
+					'name':'Menu'
 					,'key':'ctrl+m'
 					,'callback':'menuToggle()'
 				}
 				,'settings':{
-					'name':'Settings Toggle'
+					'name':'Settings'
 					,'key':'ctrl+,'
 					,'callback':'showSettings(true)'
+				},'snippets':{
+					'name':'Snippets'
+					,'key':'ctrl+shift+s'
+					,'callback':'snippetsApplyToggle()'
+				},'snippets_edit':{
+					'name':'Snippets Edit'
+					,'key':'alt+shift+s'
+					,'callback':'snippetsToggle()'
 				}
 				,'references':{
-					'name':'References Toggle'
+					'name':'References'
 					,'key':'ctrl+r'
 					,'callback':'toggleRef()'
 				}
 				,'chalkboard':{
-					'name':'Chalkboard Toggle'
+					'name':'Chalkboard'
 					,'key':'ctrl+b'
 					,'callback':'toggleChalkboard()'
 				}
@@ -573,6 +789,10 @@ function println(msg){
 					'name':'New Sketch'
 					,'key':'ctrl+n'
 					,'callback':'loadDefault()'
+				},'clonesketch':{
+					'name':'Clone Sketch'
+					,'key':'ctrl+shift+c'
+					,'callback':'cloneSketch()'
 				}
 				,'tidy':{
 					'name':'Tidy Code'
@@ -609,11 +829,6 @@ function println(msg){
 					,'key':'ctrl+o'
 					,'callback':'importSketchesDialog()'
 				}
-				,'instagram':{
-					'name':'Instagram Window'
-					,'key':'ctrl+i'
-					,'callback':'pop720()'
-				}
 				,'jump':{
 					'name':'Quick Sketch Jump'
 					,'key':'ctrl' // modifier for 1-0
@@ -624,7 +839,38 @@ function println(msg){
 			'editor':{
 				'fontSize':15, 'keybinding':'keybinding', 'linenumbers':true, 'autocomplete': false, 'lockcode':true, 'passEditorKeys':false,
 			},
+			'snippets': {
+				'demo':{
+					'new': {
+						gt:'', 
+						s:'', 
+						dt:'', 
+						db:'', 
+						gb:'',
+						demo: 'true'
+					},
+					'audio': {
+						gt:'', 
+						s:'setupAudio()', 
+						dt:'/* audio vars: amp, ampEase, fft, waveform */\nupdateAudio()', 
+						db:'', 
+						gb:'/* AUDIO INIT */\nlet mic, fftRaw, fft = [], waveform = [], amp = 0.0, ampStereo = {l:0.0, r:0.0},\nampEase = 0.0,\nnumBins = 512,\nbands = 12; \n\nfunction setupAudio() {\nuserStartAudio();\nmic = new p5.AudioIn();\nmic.start();\nfftRaw = new p5.FFT(0.75, numBins);\nfftRaw.setInput(mic);\n}\n\nfunction updateAudio() {\nfftRaw.analyze(); \namp = mic.getLevel() * 1000; // average mixed amplitude\nampStereo.l = mic.amplitude.getLevel(0) * 500; // average left amplitude\nampStereo.r = mic.amplitude.getLevel(1) * 500; // average right amplitude\nampEase = ease(amp, ampEase, 0.075); // smooth \'amp\'\nwaveform = fftRaw.waveform(); // array (-1, 1)\nfft = fftRaw.logAverages(fftRaw.getOctaveBands(bands)); // array (0, 255)\n}',
+						demo: 'true'
+					},
+				},
+				'user':{
+
+				}
+				
+				
+			},
 			'sketches': [],
+			'sonicode':{
+				'mode': 'sine',
+				'poly': 1,
+				'active': false,
+				'sonicodePoly': 0
+			},
 			'statscount': 0,
 			'syncdata': {
 				'sketches': [],
@@ -704,6 +950,11 @@ function println(msg){
 		settingsKeybindings = document.getElementById('menu-settings-keybindings'),
 		settingsCompileTimer = document.getElementById('settings-compiletimer'),
 		settingsBackup = document.getElementById('menu-settings-backup'),
+		settingsSoniCode = document.getElementById('settings-sonicode'),
+		settingsSoniCodeMode = document.getElementById('settings-sonicode-mode'),
+		settingsSoniCodePoly = document.getElementById('settings-sonicode-poly'),
+		settingsSoniCodeBase = document.getElementById('settings-sonicode-base'),
+		settingsSoniCodeDetails = document.getElementById('settings-sonicode-details'),
 		settingsShortcuts = document.getElementById('menu-shortcuts-holder'),
 		refHolder = document.getElementById('refholder'),
 		ref = document.getElementById('ref'),
@@ -716,6 +967,7 @@ function println(msg){
 		loaderSub = document.getElementById('loader-sub'),
 		notify = document.getElementById('notify'),
 		chalkboard = document.getElementById('chalkboard'),
+		sonicode = document.getElementById('sonicode').contentWindow,
 		shortcutRecording = false,
 		menuVisible = false, refVisible = false, settingsVisible = false,
 		settings = getSettings(),
@@ -1083,8 +1335,11 @@ function println(msg){
 				setBG(defaultColor);
 			}).on('change', (color, instance) => {
 				setBG(color.toHEXA().join(''));
+				// document.querySelector('.pickr .pcr-button').style.backgroundColor = '#' + color.toHEXA().join('');
+
 			}).on('save', (color, instance) => {
 				instance.hide();
+
 			}).on('cancel', instance => {
 				instance.hide();
 			});
@@ -1120,11 +1375,11 @@ function println(msg){
 		let includeScripts = {
 			p5:{
 				'local':'includes/p5/p5.min.js',
-				'remote':'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js'
+				'remote':'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js'
 			},
 			p5sound:{
 				'local':'includes/p5/addons/p5.sound.min.js',
-				'remote':'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js'
+				'remote':'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js'
 			}
 		};
 
@@ -2230,10 +2485,11 @@ function println(msg){
 
 
 		/* ASSETS */
-		preloadAssets() // waterfall assets » settings
+		preloadAssets() // waterfall assets - settings
 
 		function preloadAssets(){
 			checkOffline();
+			checkSettings();
 
 			// p5live sketch template
 			loaderSub.innerHTML = 'loading templates...';
@@ -2263,6 +2519,7 @@ function println(msg){
 				loaderSub.innerHTML = 'loading snippets...';
 				loadKeybindings();
 				setEditorCommands();
+				snippetsLoad()
 				let snippetsPath = 'includes/demos/P5L_snippets.json?' + currentRevision;
 				return fetch(snippetsPath)
 			})
@@ -2283,7 +2540,11 @@ function println(msg){
 				return fetch(syncdataPresetsPath)
 			})
 			.then(res => res.json())
-			.then(sdpOBJ => syncDataPresetLoad(sdpOBJ))
+			.then(sdpOBJ => {
+				if(settings.hasOwnProperty('syncdata')){
+					syncDataPresetLoad(sdpOBJ)
+				}
+			})
 
 			// everything else
 			.then(() => {
@@ -2338,16 +2599,15 @@ function println(msg){
 			return tempSettings;
 		}
 
-		// react to settings once gathered
-		function loadSettings(){
-
+		function checkSettings(){
 			// make sure all settings are there
 			let settingsChanged = false;
 			Object.keys(initSettings).forEach(function(k){
 				if(!settings.hasOwnProperty(k)){
 					settings[k] = initSettings[k];
 					settingsChanged = true;
-				}else if(typeof initSettings[k] === 'object'){
+				}
+				if(typeof initSettings[k] === 'object'){
 					Object.keys(initSettings[k]).forEach(function(kk){
 						if(!settings[k].hasOwnProperty(kk)){
 							settings[k][kk] = initSettings[k][kk];
@@ -2360,7 +2620,10 @@ function println(msg){
 				}
 			});
 			updateSettings();
+		}
 
+		// react to settings once gathered
+		function loadSettings(){
 
 			if(settings.revision == undefined || settings.revision < currentRevision){
 				changelog.show = true;
@@ -2396,7 +2659,7 @@ function println(msg){
 					if(dataL.version < rVersion){
 						document.getElementById('menu-p5live-version').style.display = 'inline'
 						let updateHTML = `
-						<a href="https://github.com/ffd8/P5LIVE#https" target="_blank" class="tippy" data-title="v ${dataL.version} » <span class='pulse'>${rVersion}</span>" style="color:white;text-decoration:none;">» UPDATE</a>
+						<a href="https://github.com/ffd8/P5LIVE#https" target="_blank" class="tippy" data-title="v ${dataL.version} - <span class='pulse'>${rVersion}</span>" style="color:white;text-decoration:none;">» UPDATE</a>
 						`
 						document.getElementById('menu-p5live-version').innerHTML = updateHTML;
 						loadTippy();
@@ -2426,6 +2689,7 @@ function println(msg){
 			loadTheme();
 			loadBackup();
 			themeBGactiveToggleUpdate();
+			sonicodeToggleUpdate();
 			loadColorPicker();
 			vex.defaultOptions.className = 'vex-theme-plain'
 			legacySettings(); // update sketches from 1.0.2
@@ -2436,6 +2700,7 @@ function println(msg){
 			settings.safeMode = false;
 			updateSketches();
 			filterSketches();
+			snippetsLoad()
 
 			if(settings.refresh){
 				refreshDemos();
@@ -2460,12 +2725,18 @@ function println(msg){
 
 			// load sketch by param
 			if(getParam('sketch')){
-				let urlSketch = decodeURI(getParam('sketch'));
-				if(searchSketches(urlSketch, settings.sketches)){
-					settings.fileName = urlSketch;
-					updateSettings();
-					setTimeout(function(){sketchScrollIntoView(true);}, 400);
-				}
+				settings.welcome = false
+				updateSettings();
+				setTimeout(function(){
+					let urlSketch = decodeURI(getParam('sketch'));
+					if(searchSketches(urlSketch, settings.sketches)){
+						settings.fileName = urlSketch;
+						updateSettings();
+						loadSketch(settings.fileName);
+						setTimeout(function(){sketchScrollIntoView(true);}, 500);
+					}
+				}, 500);
+				
 			}
 
 			// load RECODING by param
@@ -2702,12 +2973,14 @@ function println(msg){
 			panelSettings.style.display = 'block';
 			panelMenu.style.display = 'none';
 			settingsVisible = true;
+			snippetsPosition()
 		}
 
 		function hideSettings(){
 			panelSettings.style.display = 'none';
 			panelMenu.style.display = 'block';
 			settingsVisible = false;
+			snippetsPosition()
 		}
 
 		function resizeSketchesHolder(){
@@ -2891,17 +3164,19 @@ function println(msg){
 				let shortcut = settings.shortcuts[sc];
 				shortcutRecording = true;
 				Mousetrap.record(function(sequence) {
-					let repeatShortcut = false;
-					Object.keys(settings.shortcuts).forEach(function(ssc){
-						let sshortcut = settings.shortcuts[ssc];
-						if(sequence.join(' ') == sshortcut.key){
-							repeatShortcut = true;
-						}else if(sequence.join(' ') == shortcut.key){
-							repeatShortcut = false;
+					if(sequence.length == 1){ // only single combo
+						let repeatShortcut = false;
+						Object.keys(settings.shortcuts).forEach(function(ssc){
+							let sshortcut = settings.shortcuts[ssc];
+							if(sequence[0] == sshortcut.key || sequence[0] == shortcut.key){
+								repeatShortcut = true;
+							}
+						});
+						if(!repeatShortcut && shortcutRecording){
+							console.log(shortcut.key);
+							Mousetrap.unbind(shortcut.key)
+							shortcut.key = sequence[0];
 						}
-					});
-					if(!repeatShortcut && shortcutRecording){
-						shortcut.key = sequence.join(' ');
 					}
 					updateShortcuts();
 				});
@@ -3212,7 +3487,11 @@ function println(msg){
 				// catch RECODING
 				if(recodingCheck() && settings.fileName === 'recoding' && sketch !== settings.fileName){
 					recodingStop()
-					recodingReset(true)
+					recodingScrub(0)
+					// recodingReset(true)
+				}else if(recodingCheck()){
+					recodingStop()
+					recodingScrub(0)
 				}
 
 				if(localStorage.hasOwnProperty(sketch)){
@@ -3559,12 +3838,13 @@ function println(msg){
 		// share CODE via URL
 		function linkCode(elm){
 			let baseCode = utf8_to_b64(editor.getValue())
-			let dummy = document.createElement('input');
-			document.body.appendChild(dummy);
-			dummy.value = 'https://p5live.org/?code=' + baseCode;
-			dummy.select();
-			document.execCommand('copy');
-			document.body.removeChild(dummy);
+			// let dummy = document.createElement('input');
+			// document.body.appendChild(dummy);
+			// dummy.value = 'https://p5live.org/?code=' + baseCode;
+			// dummy.select();
+			// document.execCommand('copy');
+			// document.body.removeChild(dummy);
+			clipboard('https://p5live.org/?code=' + baseCode);
 
 			// share info
 			let oldContent = elm._tippy.props.content;
@@ -3575,6 +3855,27 @@ function println(msg){
 				elm._tippy.setContent(oldContent);
 			}, 2000);
 
+		}
+
+		function clipboard(txt){
+			let dummy = document.createElement('input');
+			document.body.appendChild(dummy);
+			dummy.value = txt;
+			dummy.select();
+			document.execCommand('copy');
+			document.body.removeChild(dummy);
+		}
+
+		function clipboardLines(elm){
+			let txt = document.getElementById(elm).innerText;
+
+			// modified from: https://stackoverflow.com/a/50230647/10885535
+			let dummy = document.createElement('textarea');
+		    dummy.innerHTML = txt;
+		    document.body.appendChild(dummy);
+		    dummy.select();
+		    document.execCommand('copy');
+		    document.body.removeChild(dummy);
 		}
 
 		// https://developer.mozilla.org/de/docs/Web/API/WindowOrWorkerGlobalScope/btoa
@@ -3882,7 +4183,7 @@ function println(msg){
 			let dups = document.getElementById('importdump').getElementsByClassName('import-sketch dup');
 			let contents = document.getElementById('importdump').getElementsByClassName('import-contents');
 			let dirs = document.getElementById('importdump').getElementsByClassName('import-folder');
-			console.log(count +" / "+dups.length)
+			console.log(count +" / "+dups.length);
 			for(let d of dups){
 				d.style.display = "block";
 				importCount.innerHTML = count;
@@ -4861,7 +5162,7 @@ function println(msg){
 		function checkErrorsWorker(){
 			let annos = editor.getSession().getAnnotations();
 
-			if(settings.debugMode){console.log(annos)};
+			if(settings.debugMode){console.log(annos);};
 			let errorsFound = false;
 			for(let i=0; i < annos.length; i++){
 				if(annos[i].type == 'error'){
@@ -5033,9 +5334,8 @@ function println(msg){
 				}
 			}
 
-			if((currCode.search(/^\s(?:for|while)(|\s)(\()/) == -1) || forceRecompile || force){
+			if((currCode.search(/^\s(?:for|while)(|\s)(\()/) == -1 || !editor.getValue().match(/(\/\/).*(no.*protect)/g)) || forceRecompile || force){
 				if(validCode){
-					if(editor.getValue().indexOf('function setup()') != -1){ // check setup exists
 						// buildSketch(); //
 						updateBackground();
 						if(settings.cocoding.active){
@@ -5045,10 +5345,10 @@ function println(msg){
 									cocode.recompile(force);
 								}
 							}else{
-								buildSketch(force); //
+								buildSketch(force);
 							}
 						}else{
-							buildSketch(force); //
+							buildSketch(force);
 						}
 
 						// if(settings.cocoding.active && settings.cocoding.sync && settings.cocoding.level == 'admin'){
@@ -5059,7 +5359,6 @@ function println(msg){
 						// 	buildSketch(); //
 						// 	updateBackground();
 						// }
-					}
 				}
 			}
 			forceRecompile = false;
@@ -5239,9 +5538,17 @@ function println(msg){
 			let scriptsCol = [];
 
 			// load scripts remote vs local
+			let useP5 = true;
 			for (const iScript in includeScripts) {
+				//no p5
+				if(editor.getValue().match(/(\/\/).no p5$/gm)){
+					useP5 = false;
+					if(iScript == 'p5' || iScript == 'p5sound') continue;
+				}
+
 				// no p5.sound
-				if(editor.getValue().match(/(\/\/).*(no.*p5.*sound)/g)){
+				if(editor.getValue().match(/(\/\/).*(no.*p5sound$)/gm)){
+					console.log('caught p5sound')
 					if(iScript == 'p5sound') continue;
 				}
 
@@ -5282,19 +5589,25 @@ function println(msg){
 			let sketchCode = editor.getValue();
 
 			// break infinite loops
-			if(!sketchCode.match(/(\/\/).*(no.*protect)/g)){
+			if(!sketchCode.match(/(\/\/).*(no.*protect)/g) || settings.cocoding.active){
 				try{
 					sketchCode = loopBreaker(sketchCode).code;
 				} catch (e) {
-					console.log(e.description)
+					console.log(`👀 error found near line ~ ${e.lineNumber}`);
+					// console.log(e.description)
 				  return false;
 				}
 			}
 
 			// console.log(sketchCode);
 			let updateVars = '\npmouseX=' + p5vars.mouseX + ';\npmouseY=' + p5vars.mouseY + ';\nmouseX=' + p5vars.mouseX + ';\nmouseY=' + p5vars.mouseY + ';\nframeCount=' + p5vars.frameCount + ';\n';
-			let codeSetup = addCode(sketchCode, updateVars, 'setup', 'bottom');
-			let fullCode = p5custom.value + codeSetup + '\nnew p5(); sketchStatus();';
+			let codeSetup = sketchCode + updateVars;
+			let fullCode = p5custom.value + codeSetup;
+			if(useP5){
+				codeSetup = addCode(sketchCode, updateVars, 'setup', 'bottom');
+				fullCode = p5custom.value + codeSetup + '\nnew p5(); sketchStatus();';
+			}
+			// let fullCode = p5custom.value + codeSetup + '\nnew p5(); sketchStatus();';
 
 			// *** disabling loadjs route.. failed is missing file.. (needed for remote/local lib loading)
 			// let sLoader = 'loadjs(' + JSON.stringify(scriptsCol) + ', {success: function() {pingReady("p5Main", ' + JSON.stringify(fullCode) + '); },error: function(pathsNotFound) {console.log(pathsNotFound);},async: false});';
@@ -5350,7 +5663,7 @@ function println(msg){
 				try{
 					curCodeTemp = loopBreaker(curCodeTemp).code;
 				} catch (e) {
-					console.log(e.description)
+					console.log(e.description);
 				  return false;
 				}
 
@@ -5359,8 +5672,7 @@ function println(msg){
 			p5f.document.head.appendChild(s);
 		}
 
-
-		function updateBackground(){
+		function getBackground(){
 			let bgReg = /background\(([^)]+)\)/;
 			let nonComments = editor.getValue();
 			nonComments = nonComments.replace(/\s*\/\/.*\n/g, '\n').replace(/\s*\/\*[\s\S]*?\*\//g, '');
@@ -5374,13 +5686,23 @@ function println(msg){
 					if(cols.length > 2){
 						newBG = rgb2hex(cols[0].trim(), cols[1].trim(), cols[2].trim());
 					}else{
-						newBG = rgb2hex(cols[0].trim(), cols[0].trim(), cols[0].trim())
+						newBG = rgb2hex(cols[0].trim(), cols[0].trim(), cols[0].trim());
 					}
 				}
+				return newBG;
+			}else{
+				return false;
+			}
+		}
+
+
+		function updateBackground(){
+			let curBG = getBackground()
+			if(curBG){
 				if(sketchLoaded){
-					p5f.document.body.style.background = newBG;
+					p5f.document.body.style.background = curBG;
 				}
-				p5frame.style.background = newBG;
+				p5frame.style.background = curBG;
 			}
 		}
 
@@ -5413,6 +5735,324 @@ function println(msg){
 
 
 		/* SNIPPETS */
+
+		function snippetsToggle(hide){
+			let snippetsPanel = document.getElementById('snippets-panel')
+			snippetsPosition()
+
+			if(snippetsPanel.style.display == 'block' || hide){
+				snippetsPanel.style.display = 'none'
+			}else{
+				snippetsPanel.style.display = 'block'
+				snippetsApplyToggle(true)
+			}
+			snippetsForm(snip.current)
+			// snippetsForm('demo-audio')
+		}
+
+		function snippetsPosition(){
+			let snippetsPanel = document.getElementById('snippets-panel')
+				let snippetsPanelRight = 0
+				if(checkMenu()){
+					snippetsPanelRight += 250
+				}
+				if(document.getElementById('menu-switch').style.display == 'block'){
+					snippetsPanelRight+= 30
+				}
+
+				snippetsPanel.style.right = snippetsPanelRight+'px';
+		}
+
+		function snippetsApplyToggle(hide){
+			snip.selectApply.value = snip.current
+			let snippetsApplyPanel = document.getElementById('snippets-panel-apply')
+				if(checkMenu()){
+					snippetsApplyPanel.style.right = '250px';
+				}else{
+					snippetsApplyPanel.style.right = '0px';
+				}
+
+				if(snippetsApplyPanel.style.display == 'block' || hide){
+					snippetsApplyPanel.style.display = 'none'
+				}else{
+					snippetsApplyPanel.style.display = 'block'
+					snippetsToggle(true)
+				}
+		}
+		function snippetsApply(){
+			let snippet = snip.current
+
+			let snippetBase = 'user'
+			if(snippet.substring(0, 5) == 'demo-'){
+				snippetBase = 'demo'
+			}
+			let snippetName = snippet.substring(5, snippet.length)
+			if(settings.snippets[snippetBase].hasOwnProperty(snippetName)){
+				let snippetCode = settings.snippets[snippetBase][snippetName];
+				let addGlobalTop = snippetCode.gt;
+				let addGlobalBottom = snippetCode.gb;
+				let addSetup = snippetCode.s;
+				let addDrawTop = snippetCode.dt;
+				let addDrawBottom = snippetCode.db;
+
+				let curCode = editor.getValue();
+				let curPos = editor.getCursorPosition()
+				let curLineText = editor.session.getLine(curPos.row);
+
+				let codeGlobalTop = addGlobalTop + '\n' + curCode;
+				let codeSetup = addCode(codeGlobalTop, addSetup, 'setup', 'bottom');
+				let codeDrawTop = addCode(codeSetup, addDrawTop, 'draw', 'top');
+				let codeDrawBottom = addCode(codeDrawTop, addDrawBottom, 'draw', 'bottom');
+				let codeGlobalBottom = codeDrawBottom + '\n\n' + addGlobalBottom;
+
+				editor.setValue(codeGlobalBottom, 1);
+				tidyCode(editor);
+
+				// return cursor to previous position (** fix if blank line)
+				let curLines = editor.getValue().split('\n')
+				if(curLineText != ''){
+					let curRow = curLines.indexOf(curLineText)
+					editor.moveCursorTo(curRow, curPos.column);
+					editor.renderer.scrollCursorIntoView({row: curRow, column: curPos.column}, 0.5);
+				}
+
+			}
+			snippetsToggle(true)
+			snippetsApplyToggle(true)
+		}
+
+		let snip = {
+			sections : ['gt', 's', 'dt', 'db', 'gb'],
+			select: document.getElementById('snippets-select'),
+			selectApply: document.getElementById('snippets-select-apply'),
+			editors:{},
+			changed : false,
+			current: 'demo-audio'
+		}
+
+		function snippetsLoad(){
+			snippetsSelect(snip.current.substring(5, snip.current.length))
+
+			for (const s of snip.sections) {
+				snip.editors[s] = ace.edit(document.getElementById(`snippets-code-${s}`))
+				let snipEdit = snip.editors[s]
+				snipEdit.setTheme(settings.theme);
+				snipEdit.session.setMode('ace/mode/javascript');
+				snipEdit.setOptions({
+					showPrintMargin: false,
+					animatedScroll: false,
+					displayIndentGuides: false,
+					useWorker: true,
+					showLineNumbers: false,
+					showGutter: false,
+					tabSize: 4, useSoftTabs: false,
+				});
+				snipEdit.getSession().on('change', function() {
+					snip.changed = true
+					snippetsSavePulse()
+				});
+			}
+			snippetsForm('demo-audio')
+		}
+
+		function snippetsSelect(sel){
+			if(settings.hasOwnProperty('snippets')){
+				snip.select.innerHTML = ''
+				snip.selectApply.innerHTML = ''
+				snippetSelectParse('demo', sel)
+				snippetSelectParse('user', sel)
+			}
+		}
+
+		function snippetSelectParse(base, sel){
+			let snippets = settings.snippets
+			snip.select.innerHTML += `<optgroup label="${base}">`
+			snip.selectApply.innerHTML += `<optgroup label="${base}">`
+			for (const key in snippets[base]) {
+				let selected = ''
+				if(sel == key){
+					selected = 'selected'
+				}
+				snip.select.innerHTML += `<option value="${base}-${key}" ${selected}>${key}</option>`
+				snip.selectApply.innerHTML += `<option value="${base}-${key}" ${selected}>${key}</option>`
+			}
+			snip.select.innerHTML += `</optgroup>`
+			snip.selectApply.innerHTML += `</optgroup>`
+		}
+
+		function snippetsApplySelect(snippet){
+			snip.current = snippet
+			snippetsSelect(snip.current.substring(5, snip.current.length))
+		}
+
+		function snippetsForm(snippet){
+			if(snippet !== undefined){
+				let snippetBase = 'user'
+				if(snippet.substring(0, 5) == 'demo-'){
+					snippetBase = 'demo'
+				}
+				let snippetName = snippet.substring(5, snippet.length)
+				if(settings.snippets[snippetBase].hasOwnProperty(snippetName)){
+					let snippetCur = settings.snippets[snippetBase][snippetName]
+					for (const key in snip.editors) {
+						snip.editors[key].setValue(snippetCur[key], 1)
+					}
+					snip.changed = false
+					snippetsSavePulse()
+					snippetsNav()
+					if(snippetBase == 'demo'){
+						snippetsNav(true)
+					}
+					snip.current = snippet
+				}
+				
+			}else{
+				return {
+					gt: snip.editors.gt.getValue(),
+					s: snip.editors.s.getValue(),
+					dt: snip.editors.dt.getValue(),
+					db: snip.editors.db.getValue(),
+					gb: snip.editors.gb.getValue(),
+				}
+			}
+		}
+
+		function snippetsNav(mode){
+			let snippetBtns = document.getElementsByClassName('snippets-btn-demo')
+			for(let sb of snippetBtns){
+				sb.style.display = 'inline'
+				sb.disabled = false
+				if(mode){
+					// sb.style.display = 'none'
+					sb.disabled = 'disabled'
+				}
+			}
+		}
+
+		function snippetsSave(){
+			settings.snippets.user[snippetsCurrent()] = snippetsForm()
+			updateSettings()
+			snip.changed = false
+			snippetsSavePulse()
+		}
+
+		function snippetsSavePulse(){
+			if(snip.changed){
+				document.getElementById('snippets-btn-save').classList.add('pulse')
+			}else{
+				document.getElementById('snippets-btn-save').classList.remove('pulse')
+			}
+		}
+
+		function snippetsImportDialog(){
+			document.getElementById('file-input-snippet').click()
+		}
+
+		function snippetsImport(data){
+			for(let i=0; i < data.length; i++){
+				let reader = new FileReader()
+				reader.onload = function(data) {
+					let tSnippet = JSON.parse(data.target.result);
+					snippetsImportParse(tSnippet)
+				}
+				reader.readAsText(data[i])
+			}
+		}
+
+		function snippetsImportParse(tSnippet){
+			if(tSnippet.hasOwnProperty('doctype') && tSnippet.doctype == 'P5L_SNIPPET'){
+				let newName = tSnippet.name.replace(/["']/g, '')
+				let nameDup = false
+				if(settings.snippets.user.hasOwnProperty(newName)){
+					newName += `_${Math.floor(Math.random()*9999)}`
+					nameDup = true
+				}
+
+				settings.snippets.user[newName] = tSnippet.code
+				updateSettings()
+				snippetsSelect(newName)
+				snippetsForm(`user-${newName}`)
+				if(nameDup){
+					snippetsUpdate('import')
+				}
+			}else{
+				vex.dialog.alert({
+					message:'Oops, select a P5L_SNIPPET file.'
+				})
+			}
+		}
+
+		function snippetsExport(){
+			let tempTimestamp = timeStampFile();
+			let snippetExport = {version:currentVersion, revision:currentRevision, doctype:'P5L_SNIPPET', name:snippetsCurrent()}
+			snippetExport.code = snippetsForm()
+			exportJSON(snippetExport, 'P5L_SNIPPET_' + snippetExport.name + tempTimestamp + '.json');
+		}
+
+		function snippetsUpdate(mode, rename){
+			vex.dialog.prompt({
+				message: mode == 'clone' ? 'Save As:' : 'Rename:',
+				value: rename ? rename : snippetsCurrent(), // placeholder
+				callback: function (value) {
+					if(value){
+						let newName = value.replace(/["']/g, '');
+						if(newName != ''){
+							if(!settings.snippets.user.hasOwnProperty(newName)) {
+								if(mode == 'clone'){
+									settings.snippets.user[newName] = snippetsForm()
+								}else if(mode == 'rename' || mode == 'import'){
+									delete settings.snippets.user[snippetsCurrent()]
+									settings.snippets.user[newName] = snippetsForm()
+								}
+								updateSettings()
+								snippetsSelect(`${newName}`)
+								snippetsNav()
+								snip.changed = false
+								snippetsSavePulse()
+							}else{
+								if(mode == 'clone' || mode == 'rename' || (newName != snippetsCurrent() && settings.snippets.user.hasOwnProperty(newName))){
+									vex.dialog.alert({
+										unsafeMessage:'"'+newName +'" already exists. <br>Pick a new name',
+										callback: function(){snippetsUpdate(mode, newName)},
+										afterOpen: function(){
+											vexSmall(this.rootEl);
+										}
+									})
+								}
+								return false;
+							}
+						}
+					}
+				},
+				afterOpen: function(){
+					document.getElementsByClassName('vex-dialog-prompt-input')[0].select();
+				}
+			})
+		}
+
+		function snippetsCurrent(){
+			return snip.select.value.substring(5, snip.select.value.length)
+		}
+
+		function snippetsDelete(){
+			vex.dialog.confirm({
+				unsafeMessage: `Delete: ${snippetsCurrent()}?`,
+				callback: function (value) {
+					if (value) {
+						delete settings.snippets.user[snippetsCurrent()]
+						updateSettings()
+						snippetsSelect()
+						snippetsForm('demo-new')
+					}
+				},
+				afterOpen: function(){
+					vexSmall(this.rootEl);
+				}
+			})
+		}
+		
+
+		// OLD SNIPPETS
 		function loadSnippets(jsonObj){
 			snippets = jsonObj.snippets;
 			let dropCommands = [];
@@ -5440,6 +6080,9 @@ function println(msg){
 			let addDrawBottom = snippetCode.draw.bottom;
 
 			let curCode = editor.getValue();
+			let curPos = editor.getCursorPosition()
+			let curLineText = editor.session.getLine(curPos.row);
+
 			let codeGlobalTop = addGlobalTop + '\n' + curCode;
 			let codeSetup = addCode(codeGlobalTop, addSetup, 'setup', 'bottom');
 			let codeDrawTop = addCode(codeSetup, addDrawTop, 'draw', 'top');
@@ -5448,6 +6091,14 @@ function println(msg){
 
 			editor.setValue(codeGlobalBottom, 1);
 			tidyCode(editor);
+
+			// return cursor to previous position (** fix if blank line)
+			let curLines = editor.getValue().split('\n')
+			if(curLineText != ''){
+				let curRow = curLines.indexOf(curLineText)
+				editor.moveCursorTo(curRow, curPos.column);
+				editor.renderer.scrollCursorIntoView({row: curRow, column: curPos.column}, 0.5);
+			}
 		}
 
 		function addCode(codeBase, codeInsert, funName, codePos){
@@ -5623,6 +6274,7 @@ function println(msg){
 			}else{
 				menuSwitch.style.display = 'block';
 			}
+			snippetsPosition()
 		}
 
 		//linenumbers toggle
@@ -5767,6 +6419,107 @@ function println(msg){
 			editor.renderer.updateFull();
 		}
 
+		function sonicodeToggle(){
+			settings.sonicode.active = !settings.sonicode.active;
+			sonicodeToggleUpdate();
+		}
+
+		// var p5livePolySynth, p5livePolySynthLoader, p5livePolySynthLoaded = false
+		function sonicodeToggleUpdate(){
+			checkToggle('sonicode.active', settings.sonicode.active, settingsSoniCode, 'SoniCode');
+
+			for(let i=0; i < settingsSoniCodeMode.options.length; i++){
+				let opt = settingsSoniCodeMode.options[i];
+				if(settings.sonicode.mode == opt.value){
+					settingsSoniCodeMode.selectedIndex = i;
+				}
+			}
+
+			for(let i=0; i < settingsSoniCodePoly.options.length; i++){
+				let opt = settingsSoniCodePoly.options[i];
+				if(settings.sonicode.poly == opt.value){
+					settingsSoniCodePoly.selectedIndex = i;
+				}
+			}
+
+			for(let i=0; i < settingsSoniCodeBase.options.length; i++){
+				let opt = settingsSoniCodeBase.options[i];
+				if(settings.sonicode.base == opt.value){
+					settingsSoniCodeBase.selectedIndex = i;
+				}
+			}
+
+			if(settings.sonicode.active){
+				settingsSoniCodeDetails.style.display = 'block'
+				// editor.getSession().on('change', function(delta) {
+				//     var curChar = delta.lines[0].charCodeAt(0)
+				//     sonicode(curChar)
+				// }) 
+
+				editor.on('change', sonicodeParse);
+				if(!sonicode.p5livePolySynthLoaded){
+					sonicodeSetup()
+				}
+			}else{
+				settingsSoniCodeDetails.style.display = 'none'
+				if(sonicode.p5livePolySynthLoaded){
+					editor.off('change', sonicodeParse);
+				}
+			}
+		}
+
+		// function sonicodeSetup(){
+		// 	// wait until p5 libs loaded
+		// 	if(p5f.p5 == undefined){
+		// 		clearInterval(p5livePolySynthLoader)
+		// 		p5livePolySynthLoader = setInterval(()=>{
+		// 			if(p5f.p5 !== undefined){
+		// 				clearInterval(p5livePolySynthLoader)
+		// 				sonicodeSetup()
+		// 				p5livePolySynthLoaded = true
+		// 			}
+		// 		}, 400)
+		// 		return
+		// 	}
+
+
+		// 	p5livePolySynth = new p5f.p5.PolySynth();
+		// 	p5livePolySynth.polyvalue = settings.sonicode.poly
+
+		// 	if(settings.sonicode.mode == 'midi'){
+
+		// 	}else{
+		// 		for(let av of p5livePolySynth.audiovoices){
+		// 			av.oscillator.oscillator.type = settings.sonicode.mode
+		// 		}
+		// 	}
+			
+		// }
+
+		function sonicodeMode(mode){
+			settings.sonicode.mode = mode
+			sonicodeSetup()
+		}
+
+		function sonicodePoly(poly){
+			settings.sonicode.poly = poly
+			sonicodeSetup()
+		}
+
+		function sonicodeBase(base){
+			settings.sonicode.base = base
+			sonicodeSetup()
+		}
+
+		function sonicodeSetup(){
+			updateSettings()
+			sonicode.sonicodeSetup(settings.sonicode)
+		}
+
+		function sonicodeParse(delta) {
+			sonicode.sonicodeParse(delta)
+		}
+
 
 		// checkbox function
 		function checkToggle(checkName, checkVar, checkElm, checkNotify){
@@ -5865,6 +6618,7 @@ function println(msg){
 			updateSettings();
 			menuToggleUpdate();
 			resizeSketchesHolder();
+			snippetsPosition()
 		}
 
 		function hideMenu(){
@@ -5917,6 +6671,7 @@ function println(msg){
 		function setBG(val){
 			if(settings.themeBG != val){
 				settings.themeBG = '#'+ val;
+				document.querySelector('.pickr .pcr-button').style.backgroundColor = '#' + val;
 				updateSettings();
 				editor.renderer.updateFull();
 			}
@@ -5926,7 +6681,7 @@ function println(msg){
 		function loadKeybindings(){
 			for(let i=0; i < settingsKeybindings.options.length; i++){
 				let opt = settingsKeybindings.options[i];
-				if(settings.editor.keybinding == opt.value){
+				if(settings.hasOwnProperty('editor') && settings.editor.keybinding == opt.value){
 					setKeybinding(opt.value);
 					settingsKeybindings.selectedIndex = i;
 				}
@@ -6167,6 +6922,9 @@ function println(msg){
 			let iFrameHead = el.getElementsByTagName('head')[0];//el.document.getElementsByTagName('body')[0];
 			let iFrameBody = el.getElementsByTagName('body')[0];//el.document.getElementsByTagName('body')[0];
 
+			let curBG = getBackground();
+			iFrameBody.style.background = curBG ? curBG : '#000';
+
 			let scriptsCol = [];
 
 			// load p5 remote
@@ -6287,8 +7045,12 @@ function println(msg){
 					let ex = refList[snippetIndex];
 					let paramsCollect = [];
 					let paramsDesc = [];
+					let methodCheck = ''
+					if(ex.itemtype == 'method'){
+						methodCheck = '()'
+					}
 					if(ex.overloads != undefined || ex.params != undefined){
-						ref.innerHTML += '<a href="#'+ex.module+'"><div class="param-title">← ' + ex.name + '</div></a><br>';
+						ref.innerHTML += '<a href="#'+ex.module+'"><div class="param-title">← ' + ex.name + methodCheck + '</div></a><br>';
 
 						if(ex.overloads != undefined){
 							ex.overloads.forEach(function(ol){
@@ -6311,9 +7073,10 @@ function println(msg){
 								if(params.length > 0){
 									paramsJoin = '(' + params.join(', ') + ')';
 								}
-								ref.innerHTML += '<div class="param-code">' + ex.name + paramsJoin + '</div>';
+								ref.innerHTML += '<div class="param-code">' + ex.name + methodCheck + paramsJoin + '</div>';
 							})
 						}else{
+							// console.log(ex)
 							let params = [];
 							ex.params.forEach(function(param){
 								if(paramsCollect.indexOf(param.name) === -1){
@@ -6335,7 +7098,15 @@ function println(msg){
 								if(params.length > 0){
 									paramsJoin = '(' + params.join(', ') + ')';
 								}
-								ref.innerHTML += '<div class="param-code">' + ex.name + paramsJoin + '</div>';
+								if(ex.code.length >0){
+									ex.code.forEach(function(c){
+										ref.innerHTML += '<div class="param-code">' + c + '</div>';
+									})
+								}else{
+									ref.innerHTML += '<div class="param-code">' + ex.name+ methodCheck + '</div>';
+								}
+								// ref.innerHTML += '<div class="param-code">' + ex.name + paramsJoin + '</div>';
+								// ref.innerHTML += '<div class="param-code">' + ex.code.join('<hr>') + '</div>';
 							}
 						}
 					}else{
@@ -6350,9 +7121,11 @@ function println(msg){
 
 					ref.innerHTML += '<br><div class="params"' + paramsDesc.join('') + '</div><br>' + desc;
 					if(ex.examples.length > 0){
+						let c = 0;
 						for(let example of ex.examples){
-							let exampleParse = 	example.replace(/\n/g, '<br> ');
-							ref.innerHTML += '<br><div class="ref-example js" type="js">'+exampleParse+'</div><br>';
+							let exampleParse = 	example.replaceAll('  ', '  ').replace(/\n/g, '<br> ').replace('<br> ', '');
+							ref.innerHTML += '<br><div class="ref-clipboard" onclick="clipboardLines(\'ref-ex-'+c+'\')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clipboard"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg></div><div class="ref-example js" type="js" style="overflow:auto; white-space: nowrap;"><div style="width:auto;">'+exampleParse+'</div></div><br><div id="ref-ex-'+c+'" style="display:none;">'+example+'</div>';
+							c++;
 						}
 
 					}
@@ -6481,15 +7254,20 @@ function println(msg){
 							desc = ci.description;
 						}
 
+						let methodCheck = ''
+						if(ci.itemtype == 'method'){
+							methodCheck = '()'
+						}
+
 						let dataName = 'data-name="' + ci.name + '"';
 						if(!noDesc){
 							if(noParams){
-								modAll.push('<a class="all-ref ref-link tippy-left" href="#/p5/' + htmlEntities(ci.name) + '" onclick="refScroll=refHolder.scrollTop;refHolder.scrollTop=0;" '+dataName+' data-title="<div style=\'text-align:left;\'>' + htmlEntities(ci.description).trim() + '</div>">' + htmlEntities(ci.name) + '<br></a>');
+								modAll.push('<a class="all-ref ref-link tippy-left" href="#/p5/' + htmlEntities(ci.name) + '" onclick="refScroll=refHolder.scrollTop;refHolder.scrollTop=0;" '+dataName+' data-title="<div style=\'text-align:left;\'>' + htmlEntities(ci.description).trim() + '</div>">' + htmlEntities(ci.name)+methodCheck + '<br></a>');
 							}else{
-								modAll.push('<a class="all-ref ref-link tippy-left" href="#/p5/' + htmlEntities(ci.name) + '" onclick="refScroll=refHolder.scrollTop;refHolder.scrollTop=0;" '+dataName+' data-title="<div style=\'text-align:left;\'>' + htmlEntities(title).trim() + '</div>">' + htmlEntities(ci.name) + '<br></a>');
+								modAll.push('<a class="all-ref ref-link tippy-left" href="#/p5/' + htmlEntities(ci.name) + '" onclick="refScroll=refHolder.scrollTop;refHolder.scrollTop=0;" '+dataName+' data-title="<div style=\'text-align:left;\'>' + htmlEntities(title).trim() + '</div>">' + htmlEntities(ci.name)+methodCheck + '<br></a>');
 							}
 						}else{
-							modAll.push('<span class="all-ref ref-nolink tippy-left" '+dataName+' data-title="'+htmlEntities(ci.name)+'">' + htmlEntities(ci.name) + '<br></span>');
+							modAll.push('<span class="all-ref ref-nolink tippy-left" '+dataName+' data-title="'+htmlEntities(ci.name)+'">' + htmlEntities(ci.name)+methodCheck + '<br></span>');
 						}
 					}
 				});
@@ -6541,6 +7319,11 @@ function println(msg){
 						}else{
 							classItem.description = '';
 						}
+						if(ci.itemtype != undefined){
+							classItem.itemtype = ci.itemtype;
+						}else{
+							classItem.itemtype = '';
+						}
 						let classCode = [];
 						let classParams = [];
 						let classExamples = [];
@@ -6569,6 +7352,7 @@ function println(msg){
 
 						if(ci.overloads != undefined || ci.params != undefined){
 							if(ci.overloads != undefined){
+								// *** fix multiple params/overloads per function to list out
 								ci.overloads.forEach(function(ol){
 									let params = [];
 									let acParams = [];
@@ -7373,7 +8157,7 @@ function println(msg){
 					try{
 						syncdataCode = loopBreaker(syncdataCode).code;
 					} catch (e) {
-						console.log(e.description)
+						console.log(e.description);
 					  return false;
 					}
 				}

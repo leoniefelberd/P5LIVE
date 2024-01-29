@@ -1,6 +1,6 @@
 {
-  "revision": 37,
-  "version": "1.1.9",
+  "revision": 44,
+  "version": "1.6.0",
   "codeKey": [
     {
       "[n]ame": "function/constant",
@@ -9,6 +9,208 @@
     }
   ],
   "code": [
+    {
+      "n": "describe",
+      "p": [
+        "text"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "describe",
+      "p": [
+        "text",
+        "[display]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "describeElement",
+      "p": [
+        "name",
+        "text"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "describeElement",
+      "p": [
+        "name",
+        "text",
+        "[display]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "textOutput",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "textOutput",
+      "p": [
+        "[display]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "gridOutput",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "gridOutput",
+      "p": [
+        "[display]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "print",
+      "p": [
+        "contents"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "frameCount",
+      "p": "Environment",
+      "t": ""
+    },
+    {
+      "n": "deltaTime",
+      "p": "Environment",
+      "t": ""
+    },
+    {
+      "n": "focused",
+      "p": "Environment",
+      "t": ""
+    },
+    {
+      "n": "cursor",
+      "p": [
+        "type"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "cursor",
+      "p": [
+        "type",
+        "[x]",
+        "[y]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "frameRate",
+      "p": [
+        "fps"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "frameRate",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "getTargetFrameRate",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "noCursor",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "displayWidth",
+      "p": "Environment",
+      "t": ""
+    },
+    {
+      "n": "displayHeight",
+      "p": "Environment",
+      "t": ""
+    },
+    {
+      "n": "windowWidth",
+      "p": "Environment",
+      "t": ""
+    },
+    {
+      "n": "windowHeight",
+      "p": "Environment",
+      "t": ""
+    },
+    {
+      "n": "windowResized",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "windowResized",
+      "p": [
+        "[event]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "width",
+      "p": "Environment",
+      "t": ""
+    },
+    {
+      "n": "height",
+      "p": "Environment",
+      "t": ""
+    },
+    {
+      "n": "fullscreen",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "fullscreen",
+      "p": [
+        "[val]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "pixelDensity",
+      "p": [
+        "val"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "pixelDensity",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "displayDensity",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "getURL",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "getURLPath",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "getURLParams",
+      "p": [],
+      "t": "m"
+    },
     {
       "n": "alpha",
       "p": [
@@ -249,7 +451,12 @@
     },
     {
       "n": "clear",
-      "p": [],
+      "p": [
+        "r",
+        "g",
+        "b",
+        "a"
+      ],
       "t": "m"
     },
     {
@@ -427,12 +634,6 @@
       "t": "m"
     },
     {
-      "p": [
-        "error"
-      ],
-      "t": "m"
-    },
-    {
       "n": "arc",
       "p": [
         "x",
@@ -483,8 +684,18 @@
         "x",
         "y",
         "w",
+        "h"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "ellipse",
+      "p": [
+        "x",
+        "y",
+        "w",
         "h",
-        "detail"
+        "[detail]"
       ],
       "t": "m"
     },
@@ -562,6 +773,22 @@
       "p": [
         "x1",
         "y1",
+        "x2",
+        "y2",
+        "x3",
+        "y3",
+        "x4",
+        "y4",
+        "[detailX]",
+        "[detailY]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "quad",
+      "p": [
+        "x1",
+        "y1",
         "z1",
         "x2",
         "y2",
@@ -572,6 +799,26 @@
         "x4",
         "y4",
         "z4"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "quad",
+      "p": [
+        "x1",
+        "y1",
+        "z1",
+        "x2",
+        "y2",
+        "z2",
+        "x3",
+        "y3",
+        "z3",
+        "x4",
+        "y4",
+        "z4",
+        "[detailX]",
+        "[detailY]"
       ],
       "t": "m"
     },
@@ -948,8 +1195,7 @@
       "n": "vertex",
       "p": [
         "x",
-        "y",
-        "z"
+        "y"
       ],
       "t": "m"
     },
@@ -958,9 +1204,42 @@
       "p": [
         "x",
         "y",
-        "z",
+        "[z]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "vertex",
+      "p": [
+        "x",
+        "y"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "vertex",
+      "p": [
+        "x",
+        "y",
+        "[z]",
         "[u]",
         "[v]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "normal",
+      "p": [
+        "vector"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "normal",
+      "p": [
+        "x",
+        "y",
+        "z"
       ],
       "t": "m"
     },
@@ -988,7 +1267,7 @@
       "n": "box",
       "p": [
         "[width]",
-        "[Height]",
+        "[height]",
         "[depth]",
         "[detailX]",
         "[detailY]"
@@ -1115,6 +1394,36 @@
         "model"
       ],
       "t": "m"
+    },
+    {
+      "n": "computeFaces",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "computeNormals",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "averageNormals",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "averagePoleNormals",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "normalize",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "VERSION",
+      "p": "Constants",
+      "t": ""
     },
     {
       "n": "P2D",
@@ -1562,6 +1871,16 @@
       "t": ""
     },
     {
+      "n": "CHAR",
+      "p": "Constants",
+      "t": ""
+    },
+    {
+      "n": "WORD",
+      "p": "Constants",
+      "t": ""
+    },
+    {
       "n": "LINEAR",
       "p": "Constants",
       "t": ""
@@ -1647,138 +1966,24 @@
       "t": ""
     },
     {
-      "n": "print",
-      "p": [
-        "contents"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "frameCount",
-      "p": "Environment",
+      "n": "LABEL",
+      "p": "Constants",
       "t": ""
     },
     {
-      "n": "deltaTime",
-      "p": "Environment",
+      "n": "FALLBACK",
+      "p": "Constants",
       "t": ""
     },
     {
-      "n": "focused",
-      "p": "Environment",
+      "n": "CONTAIN",
+      "p": "Constants",
       "t": ""
     },
     {
-      "n": "cursor",
-      "p": [
-        "type"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "cursor",
-      "p": [
-        "type",
-        "[x]",
-        "[y]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "frameRate",
-      "p": [
-        "fps"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "frameRate",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "noCursor",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "displayWidth",
-      "p": "Environment",
+      "n": "COVER",
+      "p": "Constants",
       "t": ""
-    },
-    {
-      "n": "displayHeight",
-      "p": "Environment",
-      "t": ""
-    },
-    {
-      "n": "windowWidth",
-      "p": "Environment",
-      "t": ""
-    },
-    {
-      "n": "windowHeight",
-      "p": "Environment",
-      "t": ""
-    },
-    {
-      "n": "windowResized",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "width",
-      "p": "Environment",
-      "t": ""
-    },
-    {
-      "n": "height",
-      "p": "Environment",
-      "t": ""
-    },
-    {
-      "n": "fullscreen",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "fullscreen",
-      "p": [
-        "[val]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "pixelDensity",
-      "p": [
-        "val"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "pixelDensity",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "displayDensity",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "getURL",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "getURLPath",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "getURLParams",
-      "p": [],
-      "t": "m"
     },
     {
       "n": "preload",
@@ -2286,16 +2491,6 @@
       "t": "m"
     },
     {
-      "n": "VIDEO",
-      "p": "DOM",
-      "t": ""
-    },
-    {
-      "n": "AUDIO",
-      "p": "DOM",
-      "t": ""
-    },
-    {
       "n": "createCapture",
       "p": [
         "type"
@@ -2407,9 +2602,7 @@
     },
     {
       "n": "position",
-      "p": [
-        "positionType"
-      ],
+      "p": [],
       "t": "m"
     },
     {
@@ -2417,7 +2610,7 @@
       "p": [
         "[x]",
         "[y]",
-        "positionType"
+        "[positionType]"
       ],
       "t": "m"
     },
@@ -2796,12 +2989,41 @@
     {
       "n": "applyMatrix",
       "p": [
+        "arr"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "applyMatrix",
+      "p": [
         "a",
         "b",
         "c",
         "d",
         "e",
         "f"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "applyMatrix",
+      "p": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p"
       ],
       "t": "m"
     },
@@ -3229,6 +3451,14 @@
       "t": "m"
     },
     {
+      "n": "int",
+      "p": [
+        "ns",
+        "[radix]"
+      ],
+      "t": "m"
+    },
+    {
       "n": "str",
       "p": [
         "n"
@@ -3635,13 +3865,34 @@
       "t": "m"
     },
     {
+      "n": "keyPressed",
+      "p": [
+        "[event]"
+      ],
+      "t": "m"
+    },
+    {
       "n": "keyReleased",
       "p": [],
       "t": "m"
     },
     {
+      "n": "keyReleased",
+      "p": [
+        "[event]"
+      ],
+      "t": "m"
+    },
+    {
       "n": "keyTyped",
       "p": [],
+      "t": "m"
+    },
+    {
+      "n": "keyTyped",
+      "p": [
+        "[event]"
+      ],
       "t": "m"
     },
     {
@@ -3921,6 +4172,15 @@
       "t": "m"
     },
     {
+      "n": "saveGif",
+      "p": [
+        "filename",
+        "duration",
+        "options"
+      ],
+      "t": "m"
+    },
+    {
       "n": "image",
       "p": [
         "img",
@@ -3964,7 +4224,10 @@
         "sx",
         "sy",
         "[sWidth]",
-        "[sHeight]"
+        "[sHeight]",
+        "[fit]",
+        "[xAlign]",
+        "[yAlign]"
       ],
       "t": "m"
     },
@@ -5462,6 +5725,13 @@
       "t": "m"
     },
     {
+      "n": "copy",
+      "p": [
+        "v"
+      ],
+      "t": "m"
+    },
+    {
       "n": "add",
       "p": [
         "x"
@@ -5803,6 +6073,13 @@
       "t": "m"
     },
     {
+      "n": "magSq",
+      "p": [
+        "vecT"
+      ],
+      "t": "m"
+    },
+    {
       "n": "dot",
       "p": [
         "x"
@@ -5869,9 +6146,41 @@
       "t": "m"
     },
     {
+      "n": "normalize",
+      "p": [
+        "v"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "normalize",
+      "p": [
+        "v",
+        "[target]"
+      ],
+      "t": "m"
+    },
+    {
       "n": "limit",
       "p": [
         "max"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "limit",
+      "p": [
+        "v",
+        "max"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "limit",
+      "p": [
+        "v",
+        "max",
+        "[target]"
       ],
       "t": "m"
     },
@@ -5883,8 +6192,39 @@
       "t": "m"
     },
     {
+      "n": "setMag",
+      "p": [
+        "v",
+        "len"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "setMag",
+      "p": [
+        "v",
+        "len",
+        "[target]"
+      ],
+      "t": "m"
+    },
+    {
       "n": "heading",
       "p": [],
+      "t": "m"
+    },
+    {
+      "n": "heading",
+      "p": [
+        "v"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "setHeading",
+      "p": [
+        "angle"
+      ],
       "t": "m"
     },
     {
@@ -5895,9 +6235,34 @@
       "t": "m"
     },
     {
+      "n": "rotate",
+      "p": [
+        "v",
+        "angle"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "rotate",
+      "p": [
+        "v",
+        "angle",
+        "[target]"
+      ],
+      "t": "m"
+    },
+    {
       "n": "angleBetween",
       "p": [
         "value"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "angleBetween",
+      "p": [
+        "v1",
+        "v2"
       ],
       "t": "m"
     },
@@ -5946,8 +6311,32 @@
       "t": "m"
     },
     {
+      "n": "reflect",
+      "p": [
+        "incidentVector",
+        "surfaceNormal"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "reflect",
+      "p": [
+        "incidentVector",
+        "surfaceNormal",
+        "[target]"
+      ],
+      "t": "m"
+    },
+    {
       "n": "array",
       "p": [],
+      "t": "m"
+    },
+    {
+      "n": "array",
+      "p": [
+        "v"
+      ],
       "t": "m"
     },
     {
@@ -5968,6 +6357,14 @@
       "n": "equals",
       "p": [
         "value"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "equals",
+      "p": [
+        "v1",
+        "v2"
       ],
       "t": "m"
     },
@@ -6042,9 +6439,14 @@
     },
     {
       "n": "randomGaussian",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "randomGaussian",
       "p": [
-        "mean",
-        "sd"
+        "[mean]",
+        "[sd]"
       ],
       "t": "m"
     },
@@ -6120,6 +6522,11 @@
       "t": "m"
     },
     {
+      "n": "angleMode",
+      "p": [],
+      "t": "m"
+    },
+    {
       "n": "textAlign",
       "p": [
         "horizAlign"
@@ -6190,6 +6597,13 @@
     {
       "n": "textDescent",
       "p": [],
+      "t": "m"
+    },
+    {
+      "n": "textWrap",
+      "p": [
+        "wrapStyle"
+      ],
       "t": "m"
     },
     {
@@ -6404,13 +6818,6 @@
     {
       "n": "ambientLight",
       "p": [
-        "value"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "ambientLight",
-      "p": [
         "gray"
       ],
       "t": "m"
@@ -6420,6 +6827,13 @@
       "p": [
         "gray",
         "[alpha]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "ambientLight",
+      "p": [
+        "value"
       ],
       "t": "m"
     },
@@ -6449,14 +6863,14 @@
     {
       "n": "specularColor",
       "p": [
-        "value"
+        "gray"
       ],
       "t": "m"
     },
     {
       "n": "specularColor",
       "p": [
-        "gray"
+        "value"
       ],
       "t": "m"
     },
@@ -6480,25 +6894,9 @@
         "v1",
         "v2",
         "v3",
-        "position"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "directionalLight",
-      "p": [
-        "color",
         "x",
         "y",
         "z"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "directionalLight",
-      "p": [
-        "color",
-        "position"
       ],
       "t": "m"
     },
@@ -6508,9 +6906,25 @@
         "v1",
         "v2",
         "v3",
+        "direction"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "directionalLight",
+      "p": [
+        "color",
         "x",
         "y",
         "z"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "directionalLight",
+      "p": [
+        "color",
+        "direction"
       ],
       "t": "m"
     },
@@ -6596,7 +7010,7 @@
         "ry",
         "rz",
         "[angle]",
-        "[conc]"
+        "[concentration]"
       ],
       "t": "m"
     },
@@ -6616,7 +7030,7 @@
         "position",
         "direction",
         "[angle]",
-        "[conc]"
+        "[concentration]"
       ],
       "t": "m"
     },
@@ -6640,7 +7054,7 @@
         "position",
         "direction",
         "[angle]",
-        "[conc]"
+        "[concentration]"
       ],
       "t": "m"
     },
@@ -6664,7 +7078,7 @@
         "z",
         "direction",
         "[angle]",
-        "[conc]"
+        "[concentration]"
       ],
       "t": "m"
     },
@@ -6688,7 +7102,7 @@
         "ry",
         "rz",
         "[angle]",
-        "[conc]"
+        "[concentration]"
       ],
       "t": "m"
     },
@@ -6716,7 +7130,7 @@
         "z",
         "direction",
         "[angle]",
-        "[conc]"
+        "[concentration]"
       ],
       "t": "m"
     },
@@ -6744,7 +7158,7 @@
         "ry",
         "rz",
         "[angle]",
-        "[conc]"
+        "[concentration]"
       ],
       "t": "m"
     },
@@ -6772,7 +7186,7 @@
         "ry",
         "rz",
         "[angle]",
-        "[conc]"
+        "[concentration]"
       ],
       "t": "m"
     },
@@ -6809,23 +7223,13 @@
     },
     {
       "n": "shader",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "shader",
       "p": [
-        "[s]"
+        "s"
       ],
       "t": "m"
     },
     {
       "n": "resetShader",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "normalMaterial",
       "p": [],
       "t": "m"
     },
@@ -6859,18 +7263,23 @@
       "t": "m"
     },
     {
-      "n": "ambientMaterial",
-      "p": [
-        "v1"
-      ],
+      "n": "normalMaterial",
+      "p": [],
       "t": "m"
     },
     {
       "n": "ambientMaterial",
       "p": [
         "v1",
-        "[v2]",
-        "[v3]"
+        "v2",
+        "v3"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "ambientMaterial",
+      "p": [
+        "gray"
       ],
       "t": "m"
     },
@@ -6884,7 +7293,9 @@
     {
       "n": "emissiveMaterial",
       "p": [
-        "v1"
+        "v1",
+        "v2",
+        "v3"
       ],
       "t": "m"
     },
@@ -6892,9 +7303,16 @@
       "n": "emissiveMaterial",
       "p": [
         "v1",
-        "[v2]",
-        "[v3]",
-        "[a]"
+        "v2",
+        "v3",
+        "[alpha]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "emissiveMaterial",
+      "p": [
+        "gray"
       ],
       "t": "m"
     },
@@ -7028,6 +7446,51 @@
       "t": "m"
     },
     {
+      "n": "eyeX",
+      "p": "3D",
+      "t": ""
+    },
+    {
+      "n": "eyeY",
+      "p": "3D",
+      "t": ""
+    },
+    {
+      "n": "eyeZ",
+      "p": "3D",
+      "t": ""
+    },
+    {
+      "n": "centerX",
+      "p": "3D",
+      "t": ""
+    },
+    {
+      "n": "centerY",
+      "p": "3D",
+      "t": ""
+    },
+    {
+      "n": "centerZ",
+      "p": "3D",
+      "t": ""
+    },
+    {
+      "n": "upX",
+      "p": "3D",
+      "t": ""
+    },
+    {
+      "n": "upY",
+      "p": "3D",
+      "t": ""
+    },
+    {
+      "n": "upZ",
+      "p": "3D",
+      "t": ""
+    },
+    {
       "n": "perspective",
       "p": [],
       "t": "m"
@@ -7096,31 +7559,6 @@
       "t": "m"
     },
     {
-      "n": "computeFaces",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "computeNormals",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "averageNormals",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "averagePoleNormals",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "normalize",
-      "p": [],
-      "t": "m"
-    },
-    {
       "n": "setUniform",
       "p": [
         "uniformName",
@@ -7129,63 +7567,31 @@
       "t": "m"
     },
     {
-      "n": "masterVolume",
+      "n": "userStartAudio",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "userStartAudio",
+      "p": [
+        "[elements]",
+        "[callback]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "outputVolume",
       "p": [
         "volume"
       ],
       "t": "m"
     },
     {
-      "n": "masterVolume",
+      "n": "outputVolume",
       "p": [
         "volume",
         "[rampTime]",
         "[timeFromNow]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "amp",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "amp",
-      "p": [
-        "[vol]",
-        "[rampTime]",
-        "[tFromNow]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "chain",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "chain",
-      "p": [
-        "[arguments]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "drywet",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "drywet",
-      "p": [
-        "[fade]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "connect",
-      "p": [
-        "unit"
       ],
       "t": "m"
     },
@@ -7216,377 +7622,10 @@
       "t": "m"
     },
     {
-      "n": "process",
+      "n": "saveSound",
       "p": [
-        "Signal"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "process",
-      "p": [
-        "Signal",
-        "[freq]",
-        "[res]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "set",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "set",
-      "p": [
-        "[freq]",
-        "[res]",
-        "[timeFromNow]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "freq",
-      "p": [
-        "freq"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "freq",
-      "p": [
-        "freq",
-        "[timeFromNow]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "res",
-      "p": [
-        "res"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "res",
-      "p": [
-        "res",
-        "[timeFromNow]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "gain",
-      "p": [
-        "gain"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "setType",
-      "p": [
-        "t"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "userStartAudio",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "userStartAudio",
-      "p": [
-        "[element(s)]",
-        "[callback]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "start",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "start",
-      "p": [
-        "[time]",
-        "[frequency]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "stop",
-      "p": [
-        "secondsFromNow"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "amp",
-      "p": [
-        "vol"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "amp",
-      "p": [
-        "vol",
-        "[rampTime]",
-        "[timeFromNow]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "freq",
-      "p": [
-        "Frequency"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "freq",
-      "p": [
-        "Frequency",
-        "[rampTime]",
-        "[timeFromNow]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "setType",
-      "p": [
-        "type"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "connect",
-      "p": [
-        "unit"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "pan",
-      "p": [
-        "panning",
-        "timeFromNow"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "phase",
-      "p": [
-        "phase"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "add",
-      "p": [
-        "number"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "mult",
-      "p": [
-        "number"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "scale",
-      "p": [
-        "inMin",
-        "inMax",
-        "outMin",
-        "outMax"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "play",
-      "p": [
-        "note"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "play",
-      "p": [
-        "note",
-        "[velocity]",
-        "[secondsFromNow]",
-        "[sustainTime]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "triggerAttack",
-      "p": [
-        "note"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "triggerAttack",
-      "p": [
-        "note",
-        "[velocity]",
-        "[secondsFromNow]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "triggerRelease",
-      "p": [
-        "secondsFromNow"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "setADSR",
-      "p": [
-        "attackTime"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "setADSR",
-      "p": [
-        "attackTime",
-        "[decayTime]",
-        "[susRatio]",
-        "[releaseTime]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "amp",
-      "p": [
-        "vol"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "amp",
-      "p": [
-        "vol",
-        "[rampTime]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "connect",
-      "p": [
-        "unit"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "connect",
-      "p": [
-        "unit"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "play",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "play",
-      "p": [
-        "[note]",
-        "[velocity]",
-        "[secondsFromNow]",
-        "[sustainTime]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "noteADSR",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "noteADSR",
-      "p": [
-        "[note]",
-        "[attackTime]",
-        "[decayTime]",
-        "[susRatio]",
-        "[releaseTime]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "setADSR",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "setADSR",
-      "p": [
-        "[attackTime]",
-        "[decayTime]",
-        "[susRatio]",
-        "[releaseTime]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "noteAttack",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "noteAttack",
-      "p": [
-        "[note]",
-        "[velocity]",
-        "[secondsFromNow]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "noteRelease",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "noteRelease",
-      "p": [
-        "[note]",
-        "[secondsFromNow]"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "connect",
-      "p": [
-        "unit"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "loadSound",
-      "p": [
-        "path"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "loadSound",
-      "p": [
-        "path",
-        "[successCallback]",
-        "[errorCallback]",
-        "[whileLoading]"
+        "soundFile",
+        "fileName"
       ],
       "t": "m"
     },
@@ -7661,22 +7700,6 @@
       "t": "m"
     },
     {
-      "n": "setVolume",
-      "p": [
-        "volume"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "setVolume",
-      "p": [
-        "volume",
-        "[rampTime]",
-        "[timeFromNow]"
-      ],
-      "t": "m"
-    },
-    {
       "n": "pan",
       "p": [],
       "t": "m"
@@ -7698,6 +7721,22 @@
       "n": "rate",
       "p": [
         "[playbackRate]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "setVolume",
+      "p": [
+        "volume"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "setVolume",
+      "p": [
+        "volume",
+        "[rampTime]",
+        "[timeFromNow]"
       ],
       "t": "m"
     },
@@ -7756,23 +7795,6 @@
       "t": "m"
     },
     {
-      "n": "processPeaks",
-      "p": [
-        "callback"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "processPeaks",
-      "p": [
-        "callback",
-        "[initThreshold]",
-        "[minThreshold]",
-        "[minPeaks]"
-      ],
-      "t": "m"
-    },
-    {
       "n": "addCue",
       "p": [
         "time",
@@ -7805,6 +7827,23 @@
       "n": "save",
       "p": [
         "[fileName]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "loadSound",
+      "p": [
+        "path"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "loadSound",
+      "p": [
+        "path",
+        "[successCallback]",
+        "[errorCallback]",
+        "[whileLoading]"
       ],
       "t": "m"
     },
@@ -7935,24 +7974,83 @@
       "t": "m"
     },
     {
-      "n": "fade",
+      "n": "start",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "start",
       "p": [
-        "value"
+        "[time]",
+        "[frequency]"
       ],
       "t": "m"
     },
     {
-      "n": "fade",
+      "n": "stop",
       "p": [
-        "value",
-        "[secondsFromNow]"
+        "secondsFromNow"
       ],
       "t": "m"
     },
     {
-      "n": "setInput",
+      "n": "amp",
       "p": [
-        "input"
+        "vol"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "amp",
+      "p": [
+        "vol",
+        "[rampTime]",
+        "[timeFromNow]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "freq",
+      "p": [
+        "Frequency"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "freq",
+      "p": [
+        "Frequency",
+        "[rampTime]",
+        "[timeFromNow]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "setType",
+      "p": [
+        "type"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "connect",
+      "p": [
+        "unit"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "pan",
+      "p": [
+        "panning",
+        "timeFromNow"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "phase",
+      "p": [
+        "phase"
       ],
       "t": "m"
     },
@@ -7973,7 +8071,6 @@
     {
       "n": "scale",
       "p": [
-        "number",
         "inMin",
         "inMax",
         "outMin",
@@ -8113,18 +8210,6 @@
       "t": "m"
     },
     {
-      "n": "width",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "width",
-      "p": [
-        "[width]"
-      ],
-      "t": "m"
-    },
-    {
       "n": "setType",
       "p": [],
       "t": "m"
@@ -8133,6 +8218,18 @@
       "n": "setType",
       "p": [
         "[type]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "width",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "width",
+      "p": [
+        "[width]"
       ],
       "t": "m"
     },
@@ -8205,6 +8302,125 @@
       "n": "setSource",
       "p": [
         "num"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "amp",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "amp",
+      "p": [
+        "[vol]",
+        "[rampTime]",
+        "[tFromNow]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "chain",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "chain",
+      "p": [
+        "[arguments]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "drywet",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "drywet",
+      "p": [
+        "[fade]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "connect",
+      "p": [
+        "unit"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "process",
+      "p": [
+        "Signal"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "process",
+      "p": [
+        "Signal",
+        "[freq]",
+        "[res]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "set",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "set",
+      "p": [
+        "[freq]",
+        "[res]",
+        "[timeFromNow]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "freq",
+      "p": [
+        "freq"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "freq",
+      "p": [
+        "freq",
+        "[timeFromNow]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "res",
+      "p": [
+        "res"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "res",
+      "p": [
+        "res",
+        "[timeFromNow]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "gain",
+      "p": [
+        "gain"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "setType",
+      "p": [
+        "t"
       ],
       "t": "m"
     },
@@ -8393,22 +8609,6 @@
       "t": "m"
     },
     {
-      "n": "createConvolver",
-      "p": [
-        "path"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "createConvolver",
-      "p": [
-        "path",
-        "[callback]",
-        "[errorCallback]"
-      ],
-      "t": "m"
-    },
-    {
       "n": "process",
       "p": [
         "src"
@@ -8437,6 +8637,22 @@
       "n": "toggleImpulse",
       "p": [
         "id"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "createConvolver",
+      "p": [
+        "path"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "createConvolver",
+      "p": [
+        "path",
+        "[callback]",
+        "[errorCallback]"
       ],
       "t": "m"
     },
@@ -8701,6 +8917,28 @@
       "t": "m"
     },
     {
+      "n": "update",
+      "p": [
+        "fftObject"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "onPeak",
+      "p": [
+        "callback"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "onPeak",
+      "p": [
+        "callback",
+        "[val]"
+      ],
+      "t": "m"
+    },
+    {
       "n": "setInput",
       "p": [],
       "t": "m"
@@ -8729,32 +8967,28 @@
       "t": "m"
     },
     {
-      "n": "saveSound",
+      "n": "process",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "process",
       "p": [
-        "soundFile",
-        "fileName"
+        "[amount]",
+        "[oversample]"
       ],
       "t": "m"
     },
     {
-      "n": "update",
-      "p": [
-        "fftObject"
-      ],
+      "n": "set",
+      "p": [],
       "t": "m"
     },
     {
-      "n": "onPeak",
+      "n": "set",
       "p": [
-        "callback"
-      ],
-      "t": "m"
-    },
-    {
-      "n": "onPeak",
-      "p": [
-        "callback",
-        "[val]"
+        "[amount]",
+        "[oversample]"
       ],
       "t": "m"
     },
@@ -8789,28 +9023,168 @@
       "t": "m"
     },
     {
-      "n": "process",
-      "p": [],
-      "t": "m"
-    },
-    {
-      "n": "process",
+      "n": "connect",
       "p": [
-        "[amount]",
-        "[oversample]"
+        "unit"
       ],
       "t": "m"
     },
     {
-      "n": "set",
+      "n": "play",
+      "p": [
+        "note"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "play",
+      "p": [
+        "note",
+        "[velocity]",
+        "[secondsFromNow]",
+        "[sustainTime]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "triggerAttack",
+      "p": [
+        "note"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "triggerAttack",
+      "p": [
+        "note",
+        "[velocity]",
+        "[secondsFromNow]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "triggerRelease",
+      "p": [
+        "secondsFromNow"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "setADSR",
+      "p": [
+        "attackTime"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "setADSR",
+      "p": [
+        "attackTime",
+        "[decayTime]",
+        "[susRatio]",
+        "[releaseTime]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "amp",
+      "p": [
+        "vol"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "amp",
+      "p": [
+        "vol",
+        "[rampTime]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "connect",
+      "p": [
+        "unit"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "play",
       "p": [],
       "t": "m"
     },
     {
-      "n": "set",
+      "n": "play",
       "p": [
-        "[amount]",
-        "[oversample]"
+        "[note]",
+        "[velocity]",
+        "[secondsFromNow]",
+        "[sustainTime]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "noteADSR",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "noteADSR",
+      "p": [
+        "[note]",
+        "[attackTime]",
+        "[decayTime]",
+        "[susRatio]",
+        "[releaseTime]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "setADSR",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "setADSR",
+      "p": [
+        "[attackTime]",
+        "[decayTime]",
+        "[susRatio]",
+        "[releaseTime]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "noteAttack",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "noteAttack",
+      "p": [
+        "[note]",
+        "[velocity]",
+        "[secondsFromNow]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "noteRelease",
+      "p": [],
+      "t": "m"
+    },
+    {
+      "n": "noteRelease",
+      "p": [
+        "[note]",
+        "[secondsFromNow]"
+      ],
+      "t": "m"
+    },
+    {
+      "n": "connect",
+      "p": [
+        "unit"
       ],
       "t": "m"
     }
